@@ -77,14 +77,14 @@ double IsEqualiteral(double x1, double y1, double x2, double y2, double x3, doub
 /*
 Function that find the crossection
 where the vertices are like this
-11
-* *
-*   *
+   11
+   * *
+  *   *
 12 * * 13
 
-21
-* *
-*   *
+   21
+   * *
+  *   *
 22 * * 23
 */
 
@@ -192,6 +192,8 @@ int main()
 	cin >> x22 >> y22;
 	cin >> x23 >> y23;
 
-
-
+	bool isBoth;
+	bool isFirstEq = IsEqualiteral(x11, y11, x12, y12, x13, y13);
+	bool isSecondEq = IsEqualiteral(x21, y21, x22, y22, x23, y23);
+	
 }
