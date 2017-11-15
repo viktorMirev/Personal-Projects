@@ -82,14 +82,14 @@ bool IsEqualiteral(double x1, double y1, double x2, double y2, double x3, double
 /*
 Function that find the crossection
 where the vertices are like this
-11
-* *
-*   *
+   11
+   * *
+  *   *
 12 * * 13
 
-21
-* *
-*   *
+   21
+   * *
+  *   *
 22 * * 23
 */
 
@@ -198,11 +198,12 @@ int main()
 				swap(x11, x12);
 			}
 			else
-				if (y11 < y13)
-				{
-					swap(y11, y13);
-					swap(x11, x13);
-				}
+			if (y11 < y13)
+			{
+				swap(y11, y13);
+				swap(x11, x13);
+			}
+
 			if (x12 > x13)
 			{
 				swap(x12, x13);
