@@ -13,32 +13,38 @@
 */
 
 
-
 #include<iostream>
 #include<algorithm>
 using namespace std;
 
 /*
-this function gives as a result a number which is
-0 if the triangle is not leveled and 1,2 or 3 if
-the triangle is leveled and the number tells which point
-is upmost
+this function gives as a result 1 if the triangle is leveled and 0 if not
 */
 
-
-int IsLeveled(double x1, double y1, double x2, double y2, double x3, double y3)
+bool IsLeveled(double x1, double y1, double x2, double y2, double x3, double y3)
 {
 	if (y1 == y3)
 	{
-		return 2;
+		if (y2 > y1)
+		{
+			return 1;
+		}
+
 	}
 	if (y1 == y2)
 	{
-		return 3;
+		if (y3 > y1)
+		{
+			return 1;
+		}
+
 	}
 	if (y2 == y3)
 	{
-		return 1;
+		if (y1 > y2)
+		{
+			return 1;
+		}
 	}
 	return 0;
 }
@@ -54,20 +60,19 @@ double Distance(double x1, double y1, double x2, double y2)
 
 /*
 Function that determines weather the triangle is equaliteral
-it returns the side if it is true
 */
 
-double IsEqualiteral(double x1, double y1, double x2, double y2, double x3, double y3)
+bool IsEqualiteral(double x1, double y1, double x2, double y2, double x3, double y3)
 {
 	double firstSide = Distance(x1, y1, x2, y2);
 	double secondSide = Distance(x2, y2, x3, y3);
 	double thirdSide = Distance(x1, y1, x3, y3);
 
-
+	// since we dont now the accuracy we assume it is 0.01
 
 	if (round(firstSide * 100) / 100 == round(secondSide * 100) / 100 && round(secondSide * 100) / 100 == round(thirdSide * 100) / 100)
 	{
-		return firstSide;
+		return 1;
 	}
 
 	return 0;
@@ -77,14 +82,14 @@ double IsEqualiteral(double x1, double y1, double x2, double y2, double x3, doub
 /*
 Function that find the crossection
 where the vertices are like this
-   11
-   * *
-  *   *
+11
+* *
+*   *
 12 * * 13
 
-   21
-   * *
-  *   *
+21
+* *
+*   *
 22 * * 23
 */
 
@@ -165,17 +170,6 @@ double Crossection(double x11, double y11, double x12, double y12, double x13, d
 
 int main()
 {
-	/*
-	TEST
-	4, 3.4641, 2, 0, 6, 0
-	cout << Crossection(3, 4.4641, 1, 1, 5, 1, 4, 3.4641, 2, 0, 6, 0) << endl;
-	cout << Crossection(2, 3.4641, 0, 0, 4, 0, 2, 1.73205, 1, 0, 3, 0) << endl;
-	cout << IsEqualiteral(3, 4.4641, 1, 1, 5, 1)<<endl;
-	cout << IsLeveled(3, 4.4641, 1, 1, 5, 1) << endl;
-	int a;
-	cin >> a;
-	return main();
-	*/
 
 	double x11, x12, x13, x21, x22, x23;
 	double y11, y12, y13, y21, y22, y23;
@@ -192,8 +186,56 @@ int main()
 	cin >> x22 >> y22;
 	cin >> x23 >> y23;
 
-	bool isBoth;
-	bool isFirstEq = IsEqualiteral(x11, y11, x12, y12, x13, y13);
-	bool isSecondEq = IsEqualiteral(x21, y21, x22, y22, x23, y23);
-	
+
+	if (IsLeveled(x11, y11, x12, y12, x13, y13) == 1 && IsLeveled(x21, y21, x22, y22, x23, y23) == 1)
+	{
+		if (IsEqualiteral(x11, y11, x12, y12, x13, y13) == 1 && IsEqualiteral(x21, y21, x22, y22, x23, y23) == 1)
+		{
+			//swapping if needed 1st
+			if (y11 < y12)
+			{
+				swap(y11, y12);
+				swap(x11, x12);
+			}
+			else
+				if (y11 < y13)
+				{
+					swap(y11, y13);
+					swap(x11, x13);
+				}
+			if (x12 > x13)
+			{
+				swap(x12, x13);
+				swap(y12, y13);
+			}
+			//swapping second
+			if (y21 < y22)
+			{
+				swap(y21, y22);
+				swap(x21, x22);
+			}
+			else
+				if (y21 < y23)
+				{
+					swap(y21, y23);
+					swap(x21, x23);
+				}
+			if (x22 > x23)
+			{
+				swap(x22, x23);
+				swap(y22, y23);
+			}
+
+			cout << Crossection(x11, y11, x12, y12, x13, y13, x21, y21, x22, y22, x23, y23) << endl;
+
+		}
+		else
+		{
+			cout << "Not Equiliteral!" << endl;
+		}
+	}
+	else
+	{
+		cout << "Not Leveled!" << endl;
+	}
 }
