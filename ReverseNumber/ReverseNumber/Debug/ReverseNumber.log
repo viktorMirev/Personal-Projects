@@ -1,0 +1,4 @@
+﻿  fn62231_d1_5_vc.cpp
+c:\users\mirev\documents\visual studio 2017\projects\reversenumber\reversenumber\fn62231_d1_5_vc.cpp(107): warning C4717: 'main': recursive on all control paths, function will cause runtime stack overflow
+  ReverseNumber.vcxproj -> C:\Users\Mirev\Documents\Visual Studio 2017\Projects\ReverseNumber\Debug\ReverseNumber.exe
+  ReverseNumber.vcxproj -> C:\Users\Mirev\Documents\Visual Studio 2017\Projects\ReverseNumber\Debug\ReverseNumber.pdb (Partial PDB)
