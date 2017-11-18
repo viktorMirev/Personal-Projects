@@ -1,0 +1,5 @@
+﻿  Source.cpp
+c:\users\mirev\desktop\se.su.hw1\t_5_swappedfirstnlastdigit\t_5_swappedfirstnlastdigit\source.cpp(48): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\mirev\desktop\se.su.hw1\t_5_swappedfirstnlastdigit\t_5_swappedfirstnlastdigit\source.cpp(53): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  T_5_SwappedFirstNLastDigit.vcxproj -> C:\Users\Mirev\Desktop\SE.SU.HW1\T_5_SwappedFirstNLastDigit\Debug\T_5_SwappedFirstNLastDigit.exe
+  T_5_SwappedFirstNLastDigit.vcxproj -> C:\Users\Mirev\Desktop\SE.SU.HW1\T_5_SwappedFirstNLastDigit\Debug\T_5_SwappedFirstNLastDigit.pdb (Partial PDB)
