@@ -1,0 +1,4 @@
+﻿  Source.cpp
+f:\cpp\isprime\isprime\source.cpp(35): warning C4717: 'main': recursive on all control paths, function will cause runtime stack overflow
+  IsPrime.vcxproj -> F:\CPP\IsPrime\Debug\IsPrime.exe
+  IsPrime.vcxproj -> F:\CPP\IsPrime\Debug\IsPrime.pdb (Partial PDB)
