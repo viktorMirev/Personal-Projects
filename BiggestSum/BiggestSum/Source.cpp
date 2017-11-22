@@ -37,14 +37,8 @@ int BiggestSum(int a[][100], int n)
 	}
 	return a[n - 1][n - 1];
 }
-
-int main()
+void InputHandler(int a[][100],int n)
 {
-	int n; //dimention
-	
-	cout << "Enter the dimention of the matrix" << endl;
-	cin >> n;
-	int a[100][100]; // matrix
 	cout << "Enter the elements (n x n)" << endl;
 	for (int i = 0; i < n; i++)
 	{
@@ -53,7 +47,16 @@ int main()
 			cin >> a[i][j];
 		}
 	}
-	//calculating
+}
+int main()
+{
+	int n; //dimention
+	cout << "Enter the dimention of the matrix" << endl;
+	cin >> n;
+    int a[100][100]; // matrix
+	InputHandler(a, n);
+	
+	//calculating & print
 	cout << "Biggest sum = " << BiggestSum(a, n) << endl;;
 	system("pause");
 	return 0;
