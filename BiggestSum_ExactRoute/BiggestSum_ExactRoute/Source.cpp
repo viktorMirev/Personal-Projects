@@ -6,12 +6,16 @@
 //moves allowed only rightwards and downwards
 
 /*test
-0 0 0 0 1
-0 1 0 0 1
-1 0 0 1 0
-1 0 0 1 0
-0 0 0 0 0
-3
+9 1 6 5 8 6 2 4 7 3
+7 0 4 0 1 3 8 6 3 1
+0 7 6 5 0 3 7 0 9 1
+0 6 0 5 2 4 7 1 3 0
+7 8 9 4 0 6 3 9 6 9
+8 0 4 9 2 5 6 9 7 1
+0 2 8 5 2 9 8 1 2 0
+1 7 5 9 5 8 2 1 0 5
+9 1 7 5 3 9 0 0 1 2
+9 7 4 0 3 1 8 0 0 5
 */
 
 #include<iostream>
@@ -76,6 +80,7 @@ void InputHandler(Cell a[][100], int *n)
 {
 	cout << "Enter the dimention of the matrix" << endl;
 	cin >> *n;
+	cout << endl;
 	cout << "Enter the elements (n x n)" << endl;
 	for (int i = 0; i < *n; i++)
 	{
@@ -87,17 +92,16 @@ void InputHandler(Cell a[][100], int *n)
 }
 
 void RecursiveRoute(Cell a[][100], int i, int j, char vis[][100] )
-{
-	if (i == 0 && j == 0)
-	{
-		return;
-	}
+{	
+	if (i == 0 && j == 0) return;
+
 	int helper;
 	helper = a[i][j].i;
 	j = a[i][j].j;
 	i = helper;
+
 	RecursiveRoute(a, i, j,vis);
-	cout<<"[" << i << " : " << j<<"]" << endl;
+	cout << "[" << i << " : " << j << "]" << endl;
 	vis[i][j] = '*';
 }
 
@@ -111,6 +115,12 @@ void PrintRoute(Cell a[][100], int n)
 		for (int j = 0; j < n; j++)
 		{
 			vis[i][j] = '0';
+			if (i == n - 1 && j == n - 1)
+			{
+				//the recursion does not go through it 
+				//so we hardcode it (it is the final cell)
+				vis[i][j] = '*';
+			}
 		}
 	}
 
@@ -119,6 +129,9 @@ void PrintRoute(Cell a[][100], int n)
 	int i = n - 1;
 	int j = n - 1;
 	RecursiveRoute(a, i, j,vis);
+	//the final is clear but here we add it 
+	//just to be cooler (the recursion cannot go through it)
+	cout << "[" << n-1 << " : " << n-1 << "]" << endl;
 
 	cout << endl;
 	cout << "Route (Visualisation) " << endl;
