@@ -7,27 +7,8 @@
 
 #include<iostream>
 using namespace std;
-
-
-int main()
+int BiggestSum(int a[][100], int n)
 {
-	int n; //dimention
-	
-	cout << "Enter the dimention of the matrix" << endl;
-	cin >> n;
-	int a[100][100]; // matrix
-	cout << "Enter the elements (n x n)" << endl;
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < n; j++)
-		{
-			cin >> a[i][j];
-		}
-	}
-	
-
-	//calculating
-
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < n; j++)
@@ -54,8 +35,26 @@ int main()
 			}
 		}
 	}
+	return a[n - 1][n - 1];
+}
 
-	cout << "Highest possible score: " << a[n - 1][n - 1] << endl;
+int main()
+{
+	int n; //dimention
+	
+	cout << "Enter the dimention of the matrix" << endl;
+	cin >> n;
+	int a[100][100]; // matrix
+	cout << "Enter the elements (n x n)" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cin >> a[i][j];
+		}
+	}
+	//calculating
+	cout << "Biggest sum = " << BiggestSum(a, n) << endl;;
 	system("pause");
 	return 0;
 }
