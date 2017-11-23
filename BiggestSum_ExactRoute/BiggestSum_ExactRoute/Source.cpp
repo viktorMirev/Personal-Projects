@@ -6,16 +6,19 @@
 //moves allowed only rightwards and downwards
 
 /*test
-9 1 6 5 8 6 2 4 7 3
-7 0 4 0 1 3 8 6 3 1
-0 7 6 5 0 3 7 0 9 1
-0 6 0 5 2 4 7 1 3 0
-7 8 9 4 0 6 3 9 6 9
-8 0 4 9 2 5 6 9 7 1
-0 2 8 5 2 9 8 1 2 0
-1 7 5 9 5 8 2 1 0 5
-9 1 7 5 3 9 0 0 1 2
-9 7 4 0 3 1 8 0 0 5
+9 1 6 5 8 6 2 4 7 3 7 8 2
+7 0 4 0 1 3 8 6 3 1 5 8 4
+0 7 6 5 0 3 7 0 9 1 3 1 9
+0 6 0 5 2 4 7 1 3 0 5 9 3
+7 8 9 4 0 6 3 9 6 9 0 7 2
+8 0 4 9 2 5 6 9 7 1 7 1 2
+0 2 8 5 2 9 8 1 2 0 0 1 2
+1 7 5 9 5 8 2 1 0 5 0 5 6
+9 1 7 5 3 9 0 0 1 2 5 8 1
+9 7 4 0 3 1 8 0 0 5 7 1 0
+7 8 5 7 3 1 9 7 8 5 2 1 6
+7 9 2 0 1 8 9 7 6 3 0 8 9
+1 8 6 9 1 4 7 2 0 3 9 6 7
 */
 
 #include<iostream>
@@ -102,7 +105,7 @@ void RecursiveRoute(Cell a[][100], int i, int j, char vis[][100] )
 
 	RecursiveRoute(a, i, j,vis);
 	cout << "[" << i << " : " << j << "]" << endl;
-	vis[i][j] = '*';
+	vis[i][j] = 220;
 }
 
 
@@ -114,12 +117,12 @@ void PrintRoute(Cell a[][100], int n)
 	{
 		for (int j = 0; j < n; j++)
 		{
-			vis[i][j] = '0';
+			vis[i][j] = 126;
 			if (i == n - 1 && j == n - 1)
 			{
 				//the recursion does not go through it 
 				//so we hardcode it (it is the final cell)
-				vis[i][j] = '*';
+				vis[i][j] = 220;
 			}
 		}
 	}

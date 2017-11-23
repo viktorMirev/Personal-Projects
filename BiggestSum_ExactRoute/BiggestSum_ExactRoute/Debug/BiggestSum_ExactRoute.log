@@ -1,3 +1,5 @@
 ﻿  Source.cpp
+f:\cpp\biggestsum_exactroute\biggestsum_exactroute\source.cpp(108): warning C4309: '=': truncation of constant value
+f:\cpp\biggestsum_exactroute\biggestsum_exactroute\source.cpp(125): warning C4309: '=': truncation of constant value
   BiggestSum_ExactRoute.vcxproj -> F:\CPP\BiggestSum_ExactRoute\Debug\BiggestSum_ExactRoute.exe
   BiggestSum_ExactRoute.vcxproj -> F:\CPP\BiggestSum_ExactRoute\Debug\BiggestSum_ExactRoute.pdb (Partial PDB)
