@@ -6,6 +6,7 @@
 //moves allowed only rightwards and downwards
 
 /*test
+13
 9 1 6 5 8 6 2 4 7 3 7 8 2
 7 0 4 0 1 3 8 6 3 1 5 8 4
 0 7 6 5 0 3 7 0 9 1 3 1 9
@@ -20,9 +21,15 @@
 7 9 2 0 1 8 9 7 6 3 0 8 9
 1 8 6 9 1 4 7 2 0 3 9 6 7
 */
+//TO DO 
+//declare all funcs here;
 
 #include<iostream>
 using namespace std;
+
+const char ROUTE_SYMBOL = 220;
+const char FIELD_SYMBOL = 126;
+
 struct Cell
 {
 	int i = 0;
@@ -105,7 +112,7 @@ void RecursiveRoute(Cell a[][100], int i, int j, char vis[][100] )
 
 	RecursiveRoute(a, i, j,vis);
 	cout << "[" << i << " : " << j << "]" << endl;
-	vis[i][j] = 220;
+	vis[i][j] = ROUTE_SYMBOL;
 }
 
 
@@ -117,12 +124,12 @@ void PrintRoute(Cell a[][100], int n)
 	{
 		for (int j = 0; j < n; j++)
 		{
-			vis[i][j] = 126;
+			vis[i][j] = FIELD_SYMBOL;
 			if (i == n - 1 && j == n - 1)
 			{
 				//the recursion does not go through it 
 				//so we hardcode it (it is the final cell)
-				vis[i][j] = 220;
+				vis[i][j] = ROUTE_SYMBOL;
 			}
 		}
 	}
