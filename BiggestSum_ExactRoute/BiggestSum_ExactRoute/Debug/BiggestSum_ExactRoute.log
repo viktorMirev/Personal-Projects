@@ -1,4 +1,4 @@
 ﻿  Source.cpp
-f:\cpp\biggestsum_exactroute\biggestsum_exactroute\source.cpp(29): warning C4309: 'initializing': truncation of constant value
+f:\cpp\biggestsum_exactroute\biggestsum_exactroute\source.cpp(31): warning C4309: 'initializing': truncation of constant value
   BiggestSum_ExactRoute.vcxproj -> F:\CPP\BiggestSum_ExactRoute\Debug\BiggestSum_ExactRoute.exe
   BiggestSum_ExactRoute.vcxproj -> F:\CPP\BiggestSum_ExactRoute\Debug\BiggestSum_ExactRoute.pdb (Partial PDB)

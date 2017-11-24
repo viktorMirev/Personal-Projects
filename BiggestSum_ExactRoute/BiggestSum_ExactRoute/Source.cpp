@@ -27,6 +27,7 @@
 #include<iostream>
 using namespace std;
 
+//CONSTANTS
 const char ROUTE_SYMBOL = 220;
 const char FIELD_SYMBOL = 126;
 
@@ -36,6 +37,15 @@ struct Cell
 	int j = 0;
 	int points;
 };
+
+//functions
+Cell BiggestSum(Cell a[][100], int n);
+void InputHandler(Cell a[][100], int *n);
+void RecursiveRoute(Cell a[][100], int i, int j, char vis[][100]);
+void PrintRoute(Cell a[][100], int n);
+//
+
+
 
 Cell BiggestSum(Cell a[][100], int n)
 {
@@ -114,7 +124,6 @@ void RecursiveRoute(Cell a[][100], int i, int j, char vis[][100] )
 	cout << "[" << i << " : " << j << "]" << endl;
 	vis[i][j] = ROUTE_SYMBOL;
 }
-
 
 void PrintRoute(Cell a[][100], int n)
 {
