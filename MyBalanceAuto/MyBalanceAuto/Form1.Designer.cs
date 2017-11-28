@@ -50,7 +50,7 @@
             // AddMoney
             // 
             this.AddMoney.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.AddMoney.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddMoney.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddMoney.ForeColor = System.Drawing.Color.Black;
             this.AddMoney.Location = new System.Drawing.Point(53, 186);
             this.AddMoney.Name = "AddMoney";
@@ -103,8 +103,9 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(698, 288);
             this.Controls.Add(this.SinceLabel);
@@ -114,8 +115,10 @@
             this.Controls.Add(this.AddMoney);
             this.Controls.Add(this.AddMoneyTextBox);
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Opacity = 0.89D;
+            this.Text = "money";
             this.ResumeLayout(false);
             this.PerformLayout();
 

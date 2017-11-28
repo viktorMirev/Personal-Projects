@@ -11,11 +11,14 @@ public class FileHandler : IFileHandler
         }
         private set
         {
-            if (File.Exists(FilePath) == true) this.filePath = FilePath;
-            else File.WriteAllLines("data.txt", new string[] { "0" });
-
-
-            this.filePath = "data.txt";
+      
+            if (File.Exists(value)) this.filePath = value;
+            else
+            {
+                File.WriteAllLines("data.txt", new string[] { "0" });
+                this.filePath = "data.txt";
+            }
+                
         }
     }
 

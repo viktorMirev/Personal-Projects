@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace MyBalanceAuto
 {
@@ -32,7 +27,7 @@ namespace MyBalanceAuto
             double currAdded = 0.0;
             double.TryParse(AddMoneyTextBox.Text,out currAdded);
             currentMirevBalance += currAdded;
-            int daysPassed = (DateTime.Today.Date - FIRST_DAY).Days;
+            int daysPassed = (DateTime.Today.Date - FIRST_DAY).Days+1;
             double hypoteticalExpences = DEFAULT_MONEY_PER_DAY * daysPassed;
             HypoteticalMoneyLabel.Text = hypoteticalExpences.ToString();
             bool isMirevInDebt = false;
