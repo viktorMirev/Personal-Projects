@@ -44,7 +44,7 @@
             this.AddMoneyTextBox.BackColor = System.Drawing.Color.DimGray;
             this.AddMoneyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddMoneyTextBox.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.AddMoneyTextBox.Location = new System.Drawing.Point(25, 215);
+            this.AddMoneyTextBox.Location = new System.Drawing.Point(25, 164);
             this.AddMoneyTextBox.Name = "AddMoneyTextBox";
             this.AddMoneyTextBox.Size = new System.Drawing.Size(203, 38);
             this.AddMoneyTextBox.TabIndex = 0;
@@ -53,11 +53,11 @@
             // 
             // AddMoney
             // 
-            this.AddMoney.BackColor = System.Drawing.Color.Silver;
+            this.AddMoney.BackColor = System.Drawing.Color.DimGray;
             this.AddMoney.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.AddMoney.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddMoney.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.AddMoney.Location = new System.Drawing.Point(25, 312);
+            this.AddMoney.Font = new System.Drawing.Font("Candara", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddMoney.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.AddMoney.Location = new System.Drawing.Point(25, 245);
             this.AddMoney.Name = "AddMoney";
             this.AddMoney.Size = new System.Drawing.Size(203, 48);
             this.AddMoney.TabIndex = 1;
@@ -70,7 +70,7 @@
             // 
             this.HypoteticalMoneyLabel.AutoSize = true;
             this.HypoteticalMoneyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HypoteticalMoneyLabel.Location = new System.Drawing.Point(354, 97);
+            this.HypoteticalMoneyLabel.Location = new System.Drawing.Point(354, 81);
             this.HypoteticalMoneyLabel.Name = "HypoteticalMoneyLabel";
             this.HypoteticalMoneyLabel.Size = new System.Drawing.Size(193, 38);
             this.HypoteticalMoneyLabel.TabIndex = 2;
@@ -79,10 +79,11 @@
             // MoneyDifferenceLabel
             // 
             this.MoneyDifferenceLabel.AutoSize = true;
-            this.MoneyDifferenceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MoneyDifferenceLabel.Location = new System.Drawing.Point(489, 221);
+            this.MoneyDifferenceLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoneyDifferenceLabel.ForeColor = System.Drawing.Color.DarkGray;
+            this.MoneyDifferenceLabel.Location = new System.Drawing.Point(483, 168);
             this.MoneyDifferenceLabel.Name = "MoneyDifferenceLabel";
-            this.MoneyDifferenceLabel.Size = new System.Drawing.Size(54, 32);
+            this.MoneyDifferenceLabel.Size = new System.Drawing.Size(52, 32);
             this.MoneyDifferenceLabel.TabIndex = 3;
             this.MoneyDifferenceLabel.Text = "diff";
             // 
@@ -99,19 +100,19 @@
             // SinceLabel
             // 
             this.SinceLabel.AutoSize = true;
-            this.SinceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SinceLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SinceLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.SinceLabel.Location = new System.Drawing.Point(334, 333);
+            this.SinceLabel.Location = new System.Drawing.Point(349, 260);
             this.SinceLabel.Name = "SinceLabel";
-            this.SinceLabel.Size = new System.Drawing.Size(46, 18);
+            this.SinceLabel.Size = new System.Drawing.Size(194, 25);
             this.SinceLabel.TabIndex = 5;
-            this.SinceLabel.Text = "label1";
+            this.SinceLabel.Text = "Since 22/11/2017";
             // 
             // HypoteticalExp
             // 
             this.HypoteticalExp.AutoSize = true;
             this.HypoteticalExp.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HypoteticalExp.Location = new System.Drawing.Point(18, 94);
+            this.HypoteticalExp.Location = new System.Drawing.Point(18, 81);
             this.HypoteticalExp.Name = "HypoteticalExp";
             this.HypoteticalExp.Size = new System.Drawing.Size(309, 41);
             this.HypoteticalExp.TabIndex = 6;
@@ -121,7 +122,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(331, 221);
+            this.label2.ForeColor = System.Drawing.Color.DarkGray;
+            this.label2.Location = new System.Drawing.Point(355, 168);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 32);
             this.label2.TabIndex = 7;
@@ -143,7 +145,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(569, 390);
+            this.ClientSize = new System.Drawing.Size(574, 314);
             this.Controls.Add(this.RealMoneyLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.HypoteticalExp);
