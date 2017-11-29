@@ -30,6 +30,7 @@ namespace MyBalanceAuto
             int daysPassed = (DateTime.Today.Date - FIRST_DAY).Days+1;
             double hypoteticalExpences = DEFAULT_MONEY_PER_DAY * daysPassed;
             HypoteticalMoneyLabel.Text = hypoteticalExpences.ToString();
+            RealMoneyLabel.Text = currentMirevBalance.ToString();
             bool isMirevInDebt = false;
             if (hypoteticalExpences < currentMirevBalance) isMirevInDebt = true;
             MoneyDifferenceLabel.Text = Math.Abs(hypoteticalExpences - currentMirevBalance).ToString();
@@ -37,16 +38,24 @@ namespace MyBalanceAuto
             if (isMirevInDebt)
             {
                 MirevLabel.ForeColor = Color.Red;
-                HypoteticalMoneyLabel.ForeColor = Color.WhiteSmoke;
+                HypoteticalExp.ForeColor = Color.WhiteSmoke;
             }
             else
             {
-                HypoteticalMoneyLabel.ForeColor = Color.Red;
+                HypoteticalExp.ForeColor = Color.Red;
                 MirevLabel.ForeColor = Color.WhiteSmoke;
             }
             handler.SaveIt(currentMirevBalance);
 
             AddMoneyTextBox.Text = "";
+        }
+
+        private void AddMoneyTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                AddMoney_Click(null, EventArgs.Empty);
+            }
         }
     }
 }
