@@ -57,5 +57,10 @@ namespace MyBalanceAuto
                 AddMoney_Click(null, EventArgs.Empty);
             }
         }
+
+        private void RealMoneyLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

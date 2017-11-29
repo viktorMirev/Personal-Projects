@@ -44,7 +44,7 @@
             this.AddMoneyTextBox.BackColor = System.Drawing.Color.DimGray;
             this.AddMoneyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddMoneyTextBox.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.AddMoneyTextBox.Location = new System.Drawing.Point(25, 164);
+            this.AddMoneyTextBox.Location = new System.Drawing.Point(19, 138);
             this.AddMoneyTextBox.Name = "AddMoneyTextBox";
             this.AddMoneyTextBox.Size = new System.Drawing.Size(203, 38);
             this.AddMoneyTextBox.TabIndex = 0;
@@ -57,7 +57,7 @@
             this.AddMoney.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.AddMoney.Font = new System.Drawing.Font("Candara", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddMoney.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.AddMoney.Location = new System.Drawing.Point(25, 245);
+            this.AddMoney.Location = new System.Drawing.Point(19, 198);
             this.AddMoney.Name = "AddMoney";
             this.AddMoney.Size = new System.Drawing.Size(203, 48);
             this.AddMoney.TabIndex = 1;
@@ -69,75 +69,81 @@
             // HypoteticalMoneyLabel
             // 
             this.HypoteticalMoneyLabel.AutoSize = true;
-            this.HypoteticalMoneyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HypoteticalMoneyLabel.Location = new System.Drawing.Point(354, 81);
+            this.HypoteticalMoneyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HypoteticalMoneyLabel.Location = new System.Drawing.Point(315, 66);
             this.HypoteticalMoneyLabel.Name = "HypoteticalMoneyLabel";
-            this.HypoteticalMoneyLabel.Size = new System.Drawing.Size(193, 38);
+            this.HypoteticalMoneyLabel.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.HypoteticalMoneyLabel.Size = new System.Drawing.Size(41, 32);
             this.HypoteticalMoneyLabel.TabIndex = 2;
-            this.HypoteticalMoneyLabel.Text = "HmoneyLabel";
+            this.HypoteticalMoneyLabel.Text = "20";
+            this.HypoteticalMoneyLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // MoneyDifferenceLabel
             // 
             this.MoneyDifferenceLabel.AutoSize = true;
-            this.MoneyDifferenceLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MoneyDifferenceLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MoneyDifferenceLabel.ForeColor = System.Drawing.Color.DarkGray;
-            this.MoneyDifferenceLabel.Location = new System.Drawing.Point(483, 168);
+            this.MoneyDifferenceLabel.Location = new System.Drawing.Point(439, 148);
             this.MoneyDifferenceLabel.Name = "MoneyDifferenceLabel";
-            this.MoneyDifferenceLabel.Size = new System.Drawing.Size(52, 32);
+            this.MoneyDifferenceLabel.Size = new System.Drawing.Size(43, 28);
             this.MoneyDifferenceLabel.TabIndex = 3;
             this.MoneyDifferenceLabel.Text = "diff";
             // 
             // MirevLabel
             // 
             this.MirevLabel.AutoSize = true;
-            this.MirevLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MirevLabel.Location = new System.Drawing.Point(18, 27);
+            this.MirevLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MirevLabel.ForeColor = System.Drawing.Color.Red;
+            this.MirevLabel.Location = new System.Drawing.Point(12, 12);
             this.MirevLabel.Name = "MirevLabel";
-            this.MirevLabel.Size = new System.Drawing.Size(210, 41);
+            this.MirevLabel.Size = new System.Drawing.Size(195, 38);
             this.MirevLabel.TabIndex = 4;
             this.MirevLabel.Text = "Real Expences";
             // 
             // SinceLabel
             // 
             this.SinceLabel.AutoSize = true;
-            this.SinceLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SinceLabel.Font = new System.Drawing.Font("Franklin Gothic Medium", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SinceLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.SinceLabel.Location = new System.Drawing.Point(349, 260);
+            this.SinceLabel.Location = new System.Drawing.Point(316, 213);
             this.SinceLabel.Name = "SinceLabel";
-            this.SinceLabel.Size = new System.Drawing.Size(194, 25);
+            this.SinceLabel.Size = new System.Drawing.Size(163, 21);
             this.SinceLabel.TabIndex = 5;
             this.SinceLabel.Text = "Since 22/11/2017";
             // 
             // HypoteticalExp
             // 
             this.HypoteticalExp.AutoSize = true;
-            this.HypoteticalExp.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HypoteticalExp.Location = new System.Drawing.Point(18, 81);
+            this.HypoteticalExp.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HypoteticalExp.Location = new System.Drawing.Point(12, 61);
             this.HypoteticalExp.Name = "HypoteticalExp";
-            this.HypoteticalExp.Size = new System.Drawing.Size(309, 41);
+            this.HypoteticalExp.Size = new System.Drawing.Size(288, 38);
             this.HypoteticalExp.TabIndex = 6;
             this.HypoteticalExp.Text = "Hypotetical Expences";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkGray;
-            this.label2.Location = new System.Drawing.Point(355, 168);
+            this.label2.Location = new System.Drawing.Point(315, 147);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 32);
+            this.label2.Size = new System.Drawing.Size(118, 31);
             this.label2.TabIndex = 7;
             this.label2.Text = "difference";
             // 
             // RealMoneyLabel
             // 
             this.RealMoneyLabel.AutoSize = true;
-            this.RealMoneyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RealMoneyLabel.Location = new System.Drawing.Point(354, 30);
+            this.RealMoneyLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RealMoneyLabel.Location = new System.Drawing.Point(315, 17);
             this.RealMoneyLabel.Name = "RealMoneyLabel";
-            this.RealMoneyLabel.Size = new System.Drawing.Size(189, 38);
+            this.RealMoneyLabel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.RealMoneyLabel.Size = new System.Drawing.Size(38, 32);
             this.RealMoneyLabel.TabIndex = 8;
-            this.RealMoneyLabel.Text = "RmoneyLabel";
+            this.RealMoneyLabel.Text = "10";
+            this.RealMoneyLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.RealMoneyLabel.Click += new System.EventHandler(this.RealMoneyLabel_Click);
             // 
             // Form1
             // 
@@ -145,7 +151,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(574, 314);
+            this.ClientSize = new System.Drawing.Size(566, 265);
             this.Controls.Add(this.RealMoneyLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.HypoteticalExp);
@@ -158,8 +164,10 @@
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
-            this.Opacity = 0.89D;
-            this.Text = "money";
+            this.Opacity = 0.83D;
+            this.ShowIcon = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.Text = "EXPENCES";
             this.ResumeLayout(false);
             this.PerformLayout();
 
