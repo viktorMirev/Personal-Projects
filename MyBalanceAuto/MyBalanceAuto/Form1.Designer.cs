@@ -128,7 +128,7 @@
             this.label2.ForeColor = System.Drawing.Color.DarkGray;
             this.label2.Location = new System.Drawing.Point(315, 147);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 31);
+            this.label2.Size = new System.Drawing.Size(109, 30);
             this.label2.TabIndex = 7;
             this.label2.Text = "difference";
             // 
@@ -163,10 +163,13 @@
             this.Controls.Add(this.AddMoneyTextBox);
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Location = new System.Drawing.Point(1300, 100);
             this.Name = "Form1";
-            this.Opacity = 0.83D;
+            this.Opacity = 0.73D;
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "EXPENCES";
             this.ResumeLayout(false);
             this.PerformLayout();

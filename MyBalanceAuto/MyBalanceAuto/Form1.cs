@@ -33,7 +33,7 @@ namespace MyBalanceAuto
             RealMoneyLabel.Text = currentMirevBalance.ToString();
             bool isMirevInDebt = false;
             if (hypoteticalExpences < currentMirevBalance) isMirevInDebt = true;
-            MoneyDifferenceLabel.Text = Math.Abs(hypoteticalExpences - currentMirevBalance).ToString();
+            MoneyDifferenceLabel.Text = $"{Math.Abs(hypoteticalExpences - currentMirevBalance):f2}";
 
             if (isMirevInDebt)
             {
