@@ -3,6 +3,7 @@
 using namespace std;
 
 const int TURN_VAR = -1;
+const int CELL_WIDTH = 4;
 
 struct matrixPair
 {
@@ -16,7 +17,7 @@ void PrintIt(matrixPair matrix[][100], int m,int n)
 	{
 		for (size_t j = 0; j < m; j++)
 		{
-			cout<<setw(3)<<matrix[i][j].value<< " ";
+			cout<< setw(CELL_WIDTH) <<matrix[i][j].value;
 		}
 		cout << endl;
 	}
@@ -25,19 +26,27 @@ void PrintIt(matrixPair matrix[][100], int m,int n)
 void SpiralIt(matrixPair matrix[][100], int m,int n)
 {
 	int count = m*n;
-	int currDir = 1;
-	int ittI = 1;
-	int ittJ = 1;
+	
+	//says if we itterate j or i
 	int currItt = 1;
+	//direction of i
+	int ittI = 1;
+	//direction of j
+	int ittJ = 1;
+	//the current cell
+	int currCount= 1;
 	int i = 0;
 	int j = 0;
-	while (currItt <= count)
+	while (true)
 	{
-		matrix[i][j].value = currItt;
+		matrix[i][j].value = currCount;
 		matrix[i][j].isEdge = true;
-		if (currItt == count) break;
-		if (currDir == 1)
+		if (currCount == count) break;
+
+
+		if (currItt == 1)
 		{//itterate J
+			//check if it borders the border of the matrix or a cell which was already passed
 			if (j + ittJ < m && j+ittJ>=0 &&matrix[i][j + ittJ].isEdge == false)
 			{
 				j += ittJ;
@@ -45,25 +54,28 @@ void SpiralIt(matrixPair matrix[][100], int m,int n)
 			else
 			{
 				ittJ *= TURN_VAR;
-				currDir *= TURN_VAR;
+				currItt *= TURN_VAR;
 				continue;
 			}
 		}
 		else
 		{//itterate I
+			//check if it borders the border of the matrix or a cell which was already passed
 			if (i + ittI < n && i+ittI>=0 && matrix[i+ittI][j].isEdge == false)
 			{
 				i += ittI;
 			}
 			else
 			{
+				//change the variable which is itterated 
+				//change the way the prev variable was itterated (change direction)
 				ittI *= TURN_VAR;
-				currDir *= TURN_VAR;
+				currItt *= TURN_VAR;
 				continue;
 			}
 		}
 
-		currItt++;
+		currCount++;
 		
 
 	}
