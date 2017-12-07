@@ -1,5 +1,5 @@
 #include<iostream>
-
+#include<iomanip>
 using namespace std;
 
 const int TURN_VAR = -1;
@@ -16,7 +16,7 @@ void PrintIt(matrixPair matrix[][100], int m,int n)
 	{
 		for (size_t j = 0; j < m; j++)
 		{
-			cout<<matrix[i][j].value<< " ";
+			cout<<setw(3)<<matrix[i][j].value<< " ";
 		}
 		cout << endl;
 	}
