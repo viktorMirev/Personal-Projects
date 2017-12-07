@@ -3,7 +3,7 @@
 using namespace std;
 
 const int TURN_VAR = -1;
-const int CELL_WIDTH = 4;
+const int CELL_WIDTH = 5;
 
 struct matrixPair
 {
@@ -19,10 +19,10 @@ void PrintIt(matrixPair matrix[][100], int m, int n);
 
 void InputHandler(int *lenght,int *height,int *rightOrLeft)
 {
-	cout << "Type the dimentions" << endl;
+	cout << "Insert the dimentions" << endl;
 	cin >> *lenght;
 	cin >> *height;
-	cout << "Type 1 if you want only right turns or -1 for left turns" << endl;
+	cout << "Insert 1 if you want only right turns or -1 for left turns" << endl;
 	cin >> *rightOrLeft;
 }
 
@@ -56,39 +56,85 @@ void SpiralIt(matrixPair matrix[][100], int m,int n,int rightOrLeft)
 	{
 		matrix[i][j].value = currCount;
 		matrix[i][j].isEdge = true;
-		if (currCount == count) break;
 
+		if (currCount >= count) break;
 
+		
+		///label
 		if (currItt == 1)
-		{//itterate J
-			//check if it borders the border of the matrix or a cell which was already passed
-			if (j + ittJ < m && j+ittJ>=0 &&matrix[i][j + ittJ].isEdge == false)
+		{//currently itterating J
+		 //check if it borders the border of the matrix or a cell which was already passed
+			if (j + ittJ >= m || j + ittJ < 0 || matrix[i][j + ittJ].isEdge == true)
 			{
-				j += ittJ;
-			}
-			else
-			{
+				//change the variable which is itterated 
+				//change the way the prev variable was itterated (change direction)
 				ittJ *= TURN_VAR;
 				currItt *= TURN_VAR;
-				continue;
 			}
 		}
 		else
-		{//itterate I
+		{
+			//currently itterating I
 			//check if it borders the border of the matrix or a cell which was already passed
-			if (i + ittI < n && i+ittI>=0 && matrix[i+ittI][j].isEdge == false)
-			{
-				i += ittI;
-			}
-			else
+			if (i + ittI >= n || i + ittI < 0 || matrix[i+ittI][j].isEdge == true)
 			{
 				//change the variable which is itterated 
 				//change the way the prev variable was itterated (change direction)
 				ittI *= TURN_VAR;
 				currItt *= TURN_VAR;
-				continue;
 			}
 		}
+
+		//if the currItt == 1 it is J which is itterated now
+		//so the number which we have to add will be 0 
+		//if the currItt == -1 it is I which is itterated now
+		//so the number which we have to add is just ittI
+		i += (currItt - 1) / -2 * ittI;
+
+		//if the currItt == -1 it is I which is itterated now
+		//so the number which we have to add will be 0 
+		//if the currItt == 1 it is J which is itterated now
+		//so the number which we have to add is just ittJ
+		j += (currItt + 1) / 2  * ittJ;
+		
+		//we have 2 additional calculations but 
+		//we save itterations where we have at least 2 IFs and 
+		//we assign again the matrix[i][j] (with the old method)
+
+
+		//first implementation (some additional loops)
+		//if (currItt == 1)
+		//{//itterate J
+		//	//check if it borders the border of the matrix or a cell which was already passed
+		//	if (j + ittJ < m && j+ittJ>=0 &&matrix[i][j + ittJ].isEdge == false)
+		//	{
+		//		j += ittJ;
+		//	}
+		//	else
+		//	{
+		//		//change the variable which is itterated 
+		//		//change the way the prev variable was itterated (change direction)
+		//		ittJ *= TURN_VAR;
+		//		currItt *= TURN_VAR;
+		//		continue;
+		//	}
+		//}
+		//else
+		//{//itterate I
+		//	//check if it borders the border of the matrix or a cell which was already passed
+		//	if (i + ittI < n && i+ittI>=0 && matrix[i+ittI][j].isEdge == false)
+		//	{
+		//		i += ittI;
+		//	}
+		//	else
+		//	{
+		//		//change the variable which is itterated 
+		//		//change the way the prev variable was itterated (change direction)
+		//		ittI *= TURN_VAR;
+		//		currItt *= TURN_VAR;
+		//		continue;
+		//	}
+		//}
 
 		currCount++;
 		
