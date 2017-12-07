@@ -11,6 +11,21 @@ struct matrixPair
 	bool isEdge = false;
 };
 
+
+void InputHandler(int *lenght, int *height, int *rightOrLeft);
+void SpiralIt(matrixPair matrix[][100], int m, int n, int rightOrLeft);
+void PrintIt(matrixPair matrix[][100], int m, int n);
+
+
+void InputHandler(int *lenght,int *height,int *rightOrLeft)
+{
+	cout << "Type the dimentions" << endl;
+	cin >> *lenght;
+	cin >> *height;
+	cout << "Type 1 if you want only right turns or -1 for left turns" << endl;
+	cin >> *rightOrLeft;
+}
+
 void PrintIt(matrixPair matrix[][100], int m,int n)
 {
 	for (size_t i = 0; i < n; i++)
@@ -23,12 +38,12 @@ void PrintIt(matrixPair matrix[][100], int m,int n)
 	}
 }
 
-void SpiralIt(matrixPair matrix[][100], int m,int n)
+void SpiralIt(matrixPair matrix[][100], int m,int n,int rightOrLeft)
 {
 	int count = m*n;
 	
 	//says if we itterate j or i
-	int currItt = 1;
+	int currItt = rightOrLeft;
 	//direction of i
 	int ittI = 1;
 	//direction of j
@@ -83,13 +98,14 @@ void SpiralIt(matrixPair matrix[][100], int m,int n)
 
 int main()
 {
-	int m, n;
+	
+	int lenght, height,rightOrLeft;
 	matrixPair matrix[100][100];
-	cout << "Type the dimentions" << endl;
-	cin >> m;
-	cin >> n;
-	SpiralIt(matrix, m,n);
-	PrintIt(matrix, m,n);
+
+	InputHandler(&lenght, &height, &rightOrLeft);
+	SpiralIt(matrix, lenght,height,rightOrLeft);
+	PrintIt(matrix, lenght,height);
+
 	system("pause");
 	return 0;
 }
