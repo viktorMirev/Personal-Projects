@@ -1,0 +1,4 @@
+﻿  Source.cpp
+f:\c#\spiralmatrix\spiralmatrix\source.cpp(15): warning C4018: '<': signed/unsigned mismatch
+f:\c#\spiralmatrix\spiralmatrix\source.cpp(17): warning C4018: '<': signed/unsigned mismatch
+  SpiralMatrix.vcxproj -> F:\c#\SpiralMatrix\Debug\SpiralMatrix.exe
