@@ -44,8 +44,8 @@ int main()
 			cout << "biggest: "<<BIGGEST_POSSIBLE - counter << endl;
 			break;
 		}
-		cout << BIGGEST_POSSIBLE - counter << endl;
-		//counter++;
+		//cout << BIGGEST_POSSIBLE - counter << endl;
+		counter++;
 	}
 	
 	system("pause");
