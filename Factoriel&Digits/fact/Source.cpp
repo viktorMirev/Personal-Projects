@@ -45,7 +45,7 @@ int main()
 			break;
 		}
 		cout << BIGGEST_POSSIBLE - counter << endl;
-		counter++;
+		//counter++;
 	}
 	
 	system("pause");
