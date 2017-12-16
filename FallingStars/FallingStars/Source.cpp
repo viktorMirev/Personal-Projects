@@ -36,9 +36,15 @@ void InputHandler(char* symbol, int* numberOfStars)
 	cin >> *symbol;
 }
 
-void LetItDraw(FallingStar[MAXIMUM_STAR_NUMBER], int* numberOfStars)
+void LetItDraw(FallingStar stars[MAXIMUM_STAR_NUMBER] , int* numberOfStars,char* symbol)
 {
-
+	system("cls");
+	for (size_t i = 0; i < *numberOfStars; i++)
+	{
+		COORD coord = { stars[i].x,stars[i].y};
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+		cout << *symbol;
+	}
 }
 
 void LetItSnow(char* symbol, int* numberOfStars)
@@ -56,7 +62,7 @@ void LetItSnow(char* symbol, int* numberOfStars)
 		}
 
 
-		LetItDraw(stars,numberOfStars);
+		LetItDraw(stars,numberOfStars,symbol);
 
 
 		for (int i = 0; i < *numberOfStars; i++)
