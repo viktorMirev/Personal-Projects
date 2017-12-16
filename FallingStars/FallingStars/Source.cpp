@@ -8,8 +8,8 @@ int const CONSOLE_WIDTH = 80;
 int const CONSOLE_HEIGHT = 25;
 int const MINIMUM_DISTANCE = 6;
 int const MAXIMUM_DISTANCE = 25;
-int const STAR_LENGHT = 6;
-int const FRAME_DELAY = 10;
+int const STAR_LENGTH = 6;
+int const FRAME_DELAY = 13;
 
 struct FallingStar
 {
@@ -41,11 +41,18 @@ void LetItDraw(FallingStar stars[MAXIMUM_STAR_NUMBER] , int* numberOfStars,char*
 	system("cls");
 	for (size_t i = 0; i < *numberOfStars; i++)
 	{
-		COORD coord = { stars[i].x,stars[i].y};
-		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-		cout << *symbol;
-		COORD coordFucker = { 0,0 };
-		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coordFucker);
+		int x = stars[i].x;
+		int y = stars[i].y;
+		for (size_t i = 0; i < STAR_LENGTH; i++)
+		{
+			COORD coord = { x,y-i };
+			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+			cout << *symbol;
+			COORD coordFucker = { 0,0 };
+			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coordFucker);
+		}
+		
+		
 	}
 }
 
