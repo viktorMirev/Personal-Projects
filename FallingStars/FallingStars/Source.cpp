@@ -36,6 +36,11 @@ void InputHandler(char* symbol, int* numberOfStars)
 	cin >> *symbol;
 }
 
+void LetItDraw(FallingStar[MAXIMUM_STAR_NUMBER], int* numberOfStars)
+{
+
+}
+
 void LetItSnow(char* symbol, int* numberOfStars)
 {
 	FallingStar stars[MAXIMUM_STAR_NUMBER];
@@ -48,8 +53,19 @@ void LetItSnow(char* symbol, int* numberOfStars)
 				stars[i] = FallingStar();
 				stars[i].distance = MINIMUM_DISTANCE + rand() % (MAXIMUM_DISTANCE - MINIMUM_DISTANCE);
 			}
-
 		}
+
+
+		LetItDraw(stars,numberOfStars);
+
+
+		for (int i = 0; i < *numberOfStars; i++)
+		{
+			stars[i].distance--;
+			stars[i].y++;
+		}
+
+		Sleep(FRAME_DELAY);
 	}
 }
 
