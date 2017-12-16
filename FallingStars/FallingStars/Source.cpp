@@ -1,3 +1,17 @@
+/**
+*
+* Solution to homework task 
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2017/2018
+*
+* @author Viktor Stoyanov Mirev
+* @idnumber 62231
+* @task 5
+* @compiler VC
+*
+*/
+
 #include<iostream>
 #include<windows.h>
 using namespace std;
@@ -9,8 +23,10 @@ int const CONSOLE_HEIGHT = 25;
 int const MINIMUM_DISTANCE = 6;
 int const MAXIMUM_DISTANCE = 25;
 int const STAR_LENGTH = 6;
-int const FRAME_DELAY = 13;
+int const FRAME_DELAY = 30;
 
+
+//DATA TYPES
 struct FallingStar
 {
 	int x;
@@ -24,35 +40,50 @@ struct FallingStar
 	}
 };
 
+//FUNCTIONS
+void InputHandler(char* symbol, int* numberOfStars);
+void LetItDraw(FallingStar stars[MAXIMUM_STAR_NUMBER], int* numberOfStars, char* symbol);
+void LetItSnow(char* symbol, int* numberOfStars);
+void LetItSnow(char* symbol, int* numberOfStars);
+
+
+//User interface and data validation
 void InputHandler(char* symbol, int* numberOfStars)
 {
 	cout << "Falling Stars" << endl;
 	while (*numberOfStars<MINIMUM_STAR_NUMBER || *numberOfStars>MAXIMUM_STAR_NUMBER)
 	{
-		cout << "Please enter the number of the stars ("<<MINIMUM_STAR_NUMBER<<", "<<MAXIMUM_STAR_NUMBER<<")" << endl;
+		cout << "Please enter the number of the stars (" << MINIMUM_STAR_NUMBER << ", " << MAXIMUM_STAR_NUMBER << ")" << endl;
 		cin >> *numberOfStars;
 	}
 	cout << "Please enter the symbol representing a star" << endl;
 	cin >> *symbol;
 }
 
-void LetItDraw(FallingStar stars[MAXIMUM_STAR_NUMBER] , int* numberOfStars,char* symbol)
+
+void LetItDraw(FallingStar stars[MAXIMUM_STAR_NUMBER], int* numberOfStars, char* symbol)
 {
+	HANDLE STD_HANDLE = GetStdHandle(STD_OUTPUT_HANDLE);
+
 	system("cls");
+
 	for (size_t i = 0; i < *numberOfStars; i++)
 	{
 		int x = stars[i].x;
 		int y = stars[i].y;
 		for (size_t i = 0; i < STAR_LENGTH; i++)
 		{
-			COORD coord = { x,y-i };
-			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+
+			COORD coord = { x,y - i };
+			//fun vertion
+			//COORD coord = { x - i,y - i };
+
+			SetConsoleCursorPosition(STD_HANDLE, coord);
 			cout << *symbol;
-			COORD coordFucker = { 0,0 };
-			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coordFucker);
+
+			COORD zero = { 0,0 };
+			SetConsoleCursorPosition(STD_HANDLE, zero);
 		}
-		
-		
 	}
 }
 
@@ -71,23 +102,27 @@ void LetItSnow(char* symbol, int* numberOfStars)
 		}
 
 
-		LetItDraw(stars,numberOfStars,symbol);
+		LetItDraw(stars, numberOfStars, symbol);
 
 
 		for (int i = 0; i < *numberOfStars; i++)
 		{
 			stars[i].distance--;
 			stars[i].y++;
+			//fun vertion
+			//stars[i].x++;
 		}
 
 		Sleep(FRAME_DELAY);
 	}
 }
 
+
 int main()
 {
 	int numberOfStars = 0;
 	char symbol;
-	InputHandler(&symbol,&numberOfStars);
-	LetItSnow(&symbol,&numberOfStars);
+	InputHandler(&symbol, &numberOfStars);
+	LetItSnow(&symbol, &numberOfStars);
+	return 0;
 }
