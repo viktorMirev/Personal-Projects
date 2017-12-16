@@ -9,6 +9,7 @@ int const CONSOLE_HEIGHT = 25;
 int const MINIMUM_DISTANCE = 6;
 int const MAXIMUM_DISTANCE = 25;
 int const STAR_LENGHT = 6;
+int const FRAME_DELAY = 1000;
 
 struct FallingStar
 {
@@ -19,7 +20,7 @@ struct FallingStar
 	{
 		this->x = rand() % 80;
 		this->y = 0;
-		this->distance = 6 + rand() % 19;
+		this->distance = 0;
 	}
 };
 
@@ -35,10 +36,27 @@ void InputHandler(char* symbol, int* numberOfStars)
 	cin >> *symbol;
 }
 
+void LetItSnow(char* symbol, int* numberOfStars)
+{
+	FallingStar stars[MAXIMUM_STAR_NUMBER];
+	while (true)
+	{
+		for (int i = 0; i < *numberOfStars; i++)
+		{
+			if (stars[i].distance == 0)
+			{
+				stars[i] = FallingStar();
+				stars[i].distance = MINIMUM_DISTANCE + rand() % (MAXIMUM_DISTANCE - MINIMUM_DISTANCE);
+			}
+
+		}
+	}
+}
+
 int main()
 {
 	int numberOfStars = 0;
 	char symbol;
 	InputHandler(&symbol,&numberOfStars);
-	LetItSnow();
+	LetItSnow(&symbol,&numberOfStars);
 }
