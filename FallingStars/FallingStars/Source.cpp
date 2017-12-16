@@ -28,6 +28,11 @@ int const STAR_LENGTH = 2;
 int const FRAME_DELAY = 0;
 int const WIND_SPEED = 1;
 
+//SOME ADDITIONAL INTRO CONSTANTS
+int const FINAL_DELAY = 2000;
+int const DELAY_BEFORE_M_XMAS = 500;
+int const HO_HO_DELAY = 1200;
+
 //DATA TYPES
 struct FallingStar
 {
@@ -127,7 +132,7 @@ void FunnyIntro()
 		cout << endl;
 		cout << endl;
 		cout << setw(20*(i+1)) << "HO!";
-		Sleep(1200);
+		Sleep(HO_HO_DELAY);
 	}
 	system("cls");
 	for (size_t i = 0; i < 3; i++)
@@ -136,15 +141,15 @@ void FunnyIntro()
 		cout << endl;
 		cout << endl;
 		cout << setw(20*(i+1)) << "LET IT SNOW!!!";
-		Sleep(1200);
+		Sleep(HO_HO_DELAY);
 	}
 	system("cls");
-	Sleep(500);
+	Sleep(DELAY_BEFORE_M_XMAS);
 	cout << endl;
 	cout << endl;
 	cout << endl;
 	cout << setw(30) << "    Merry XMAS @ by V. MIREV" << endl;
-	Sleep(2000);
+	Sleep(FINAL_DELAY);
 	
 }
 
