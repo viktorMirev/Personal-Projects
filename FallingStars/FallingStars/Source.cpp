@@ -14,17 +14,18 @@
 
 #include<iostream>
 #include<windows.h>
+#include<iomanip>
 using namespace std;
 
 //CONSTANTS
 int const MAXIMUM_STAR_NUMBER = 30;
 int const MINIMUM_STAR_NUMBER = 8;
-int const CONSOLE_WIDTH = 80;
+int const CONSOLE_WIDTH = 100;
 int const CONSOLE_HEIGHT = 25;
 int const MINIMUM_DISTANCE = 6;
-int const MAXIMUM_DISTANCE = 25;
-int const STAR_LENGTH = 3;
-int const FRAME_DELAY = 3;
+int const MAXIMUM_DISTANCE = 35;//25
+int const STAR_LENGTH = 2;
+int const FRAME_DELAY = 0;
 int const WIND_SPEED = 1;
 
 //DATA TYPES
@@ -46,6 +47,7 @@ void InputHandler(char* symbol, int* numberOfStars);
 void LetItDraw(FallingStar stars[MAXIMUM_STAR_NUMBER], int* numberOfStars, char* symbol);
 void LetItSnow(char* symbol, int* numberOfStars);
 void LetItSnow(char* symbol, int* numberOfStars);
+void FunnyIntro();
 
 
 //User interface and data validation
@@ -65,7 +67,7 @@ void InputHandler(char* symbol, int* numberOfStars)
 void LetItDraw(FallingStar stars[MAXIMUM_STAR_NUMBER], int* numberOfStars, char* symbol)
 {
 	HANDLE STD_HANDLE = GetStdHandle(STD_OUTPUT_HANDLE);
-
+	Sleep(FRAME_DELAY);
 	system("cls");
 
 	for (size_t i = 0; i < *numberOfStars; i++)
@@ -112,8 +114,38 @@ void LetItSnow(char* symbol, int* numberOfStars)
 			stars[i].x+=WIND_SPEED;
 		}
 
-		Sleep(FRAME_DELAY);
+		
 	}
+}
+
+void FunnyIntro()
+{
+	system("cls");
+	for (size_t i = 0; i < 3; i++)
+	{
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << setw(20*(i+1)) << "HO!";
+		Sleep(1200);
+	}
+	system("cls");
+	for (size_t i = 0; i < 3; i++)
+	{
+		cout << endl;
+		cout << endl;
+		cout << endl;
+		cout << setw(20*(i+1)) << "LET IT SNOW!!!";
+		Sleep(1200);
+	}
+	system("cls");
+	Sleep(500);
+	cout << endl;
+	cout << endl;
+	cout << endl;
+	cout << setw(30) << "    Merry XMAS @ by V. MIREV" << endl;
+	Sleep(2000);
+	
 }
 
 
@@ -122,6 +154,7 @@ int main()
 	int numberOfStars = 0;
 	char symbol;
 	InputHandler(&symbol, &numberOfStars);
+	FunnyIntro();
 	LetItSnow(&symbol, &numberOfStars);
 	return 0;
 }
