@@ -27,7 +27,7 @@ struct FallingStar
 void InputHandler(char* symbol, int* numberOfStars)
 {
 	cout << "Falling Stars" << endl;
-	while (*numberOfStars<MINIMUM_STAR_NUMBER && *numberOfStars>MAXIMUM_STAR_NUMBER)
+	while (*numberOfStars<MINIMUM_STAR_NUMBER || *numberOfStars>MAXIMUM_STAR_NUMBER)
 	{
 		cout << "Please enter the number of the stars ("<<MINIMUM_STAR_NUMBER<<", "<<MAXIMUM_STAR_NUMBER<<")" << endl;
 		cin >> *numberOfStars;
