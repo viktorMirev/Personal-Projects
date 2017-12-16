@@ -16,15 +16,16 @@
 #include<windows.h>
 using namespace std;
 
+//CONSTANTS
 int const MAXIMUM_STAR_NUMBER = 30;
 int const MINIMUM_STAR_NUMBER = 8;
 int const CONSOLE_WIDTH = 80;
 int const CONSOLE_HEIGHT = 25;
 int const MINIMUM_DISTANCE = 6;
 int const MAXIMUM_DISTANCE = 25;
-int const STAR_LENGTH = 6;
-int const FRAME_DELAY = 30;
-
+int const STAR_LENGTH = 3;
+int const FRAME_DELAY = 3;
+int const WIND_SPEED = 1;
 
 //DATA TYPES
 struct FallingStar
@@ -73,11 +74,9 @@ void LetItDraw(FallingStar stars[MAXIMUM_STAR_NUMBER], int* numberOfStars, char*
 		int y = stars[i].y;
 		for (size_t i = 0; i < STAR_LENGTH; i++)
 		{
-
-			COORD coord = { x,y - i };
-			//fun vertion
-			//COORD coord = { x - i,y - i };
-
+			//I just added wind speed which by default is 0
+			COORD coord = { x-i*WIND_SPEED,y - i };
+			
 			SetConsoleCursorPosition(STD_HANDLE, coord);
 			cout << *symbol;
 
@@ -109,8 +108,8 @@ void LetItSnow(char* symbol, int* numberOfStars)
 		{
 			stars[i].distance--;
 			stars[i].y++;
-			//fun vertion
-			//stars[i].x++;
+			//added an option for wind , which is zero by default
+			stars[i].x+=WIND_SPEED;
 		}
 
 		Sleep(FRAME_DELAY);
