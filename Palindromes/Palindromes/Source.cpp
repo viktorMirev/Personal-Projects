@@ -73,28 +73,33 @@ int CountPalindromes(Palindrome palindromes[100],string & text, int maxNum)
 	}
 	return count;
 }
-
-int main()
+void PrintResult(Palindrome palindromes[100], int count)
 {
-	string text;
-	getline(cin,text);
-	Palindrome palindromes[100];
-	//we pass the lenght to the function because the number of the palindromes cannot be more than it
-	int numberOfPalindormes = CountPalindromes(palindromes,text, text.length());
-
-	if (numberOfPalindormes == 0)
+	if (count == 0)
 	{
 		cout << "NO!" << endl;
 	}
 	else
 	{
 		//printing
-		for (size_t i = 0; i < numberOfPalindormes; i++)
+		for (size_t i = 0; i < count; i++)
 		{
 			cout << palindromes[i].content << " - " << palindromes[i].count << endl;
 		}
-		system("pause");
-		return 0;
 	}
+}
+
+int main()
+{
+	string text;
+	cout << "Please enter the text for check if it contains palindromes" << endl;
+	getline(cin,text);
+	Palindrome palindromes[100];
+	//we pass the lenght to the function because the number of the palindromes cannot be more than it
+	int numberOfPalindormes = CountPalindromes(palindromes,text, text.length());
+
+	PrintResult(palindromes, numberOfPalindormes);
+	//system("pause");
+	return 0;
 	
 }
