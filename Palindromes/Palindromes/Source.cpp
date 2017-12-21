@@ -18,7 +18,7 @@
 
 using namespace std;
 
-struct Palindrome
+struct MyPalindrome
 {
 	string content;
 	int count = 0;
@@ -37,7 +37,7 @@ bool IsPalindrome(string & text)
 
 
 //gets all substrings and test them for palindromness
-int CountPalindromes(Palindrome palindromes[100],string & text, int maxNum)
+int CountPalindromes(MyPalindrome palindromes[100],string & text, int maxNum)
 {
 	int count = 0;
 	int startPosition = 0;
@@ -73,7 +73,7 @@ int CountPalindromes(Palindrome palindromes[100],string & text, int maxNum)
 	}
 	return count;
 }
-void PrintResult(Palindrome palindromes[100], int count)
+void PrintResult(MyPalindrome palindromes[100], int count)
 {
 	if (count == 0)
 	{
@@ -94,12 +94,12 @@ int main()
 	string text;
 	cout << "Please enter the text for check if it contains palindromes" << endl;
 	getline(cin,text);
-	Palindrome palindromes[100];
+	MyPalindrome palindromes[100];
 	//we pass the lenght to the function because the number of the palindromes cannot be more than it
 	int numberOfPalindormes = CountPalindromes(palindromes,text, text.length());
 
 	PrintResult(palindromes, numberOfPalindormes);
-	//system("pause");
+	system("pause");
 	return 0;
 	
 }
