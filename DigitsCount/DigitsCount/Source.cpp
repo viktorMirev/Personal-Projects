@@ -3,9 +3,40 @@
 
 using namespace std;
 
-void InputHandle(string * number)
+string const MAX_INT_AS_STRING = "2147483647";
+string const MIN_INT_AS_STRING = "2147483648";
+int const INT_MAX_NUMBER_OF_DIGITS = 10;
+
+int InputHandle(string * number)
 {
-	cin >> * number;
+	cin >> *number;
+	bool IsNegative = false;
+	if(number->at(0) == '-')
+	{
+		*number = number->substr(1);
+		IsNegative = true;
+	}
+	int numberOFDigits = number->length();
+
+	if (numberOFDigits > INT_MAX_NUMBER_OF_DIGITS)
+	{
+		return -1;
+	}
+
+	if (numberOFDigits == INT_MAX_NUMBER_OF_DIGITS)
+	{
+		if (IsNegative)
+		{
+			if (*number > MIN_INT_AS_STRING) return -1;
+		}
+		else
+		{
+			if (*number > MAX_INT_AS_STRING) return -1;
+		}
+	}
+	return 1;
+	
+	
 }
 
 int DigitHandle(string number, int digits[10])
@@ -26,20 +57,30 @@ int main()
 {
 	string number;
 	int digits[10];
+
+	//default 0
 	for (int i = 0; i < 10; i++)
 	{
 		digits[i] = 0;
 	}
-	InputHandle(&number);
+
+	//input varification
+	if (InputHandle(&number) == -1)
+	{
+		cout << "-1" << endl;
+		system("pause");
+		return 0;
+	}
+
 
 	int maxNumber = DigitHandle(number,digits);
-	cout << maxNumber << endl;
+
 	for (int i = 0; i < 10; i++)
 	{
-		//cout <<i<<"-->"<< digits[i] << endl;
 		if (digits[i] == maxNumber) cout <<i<< "-->" << maxNumber << endl;
 	}
+
 	system("pause");
-	return main();
+	return 0;
 
 }
