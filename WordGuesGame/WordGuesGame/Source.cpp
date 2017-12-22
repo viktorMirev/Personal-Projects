@@ -14,16 +14,27 @@ MyString DataBase[100] =
 	{ new char[12]{ 'r','e','f','r','i','g', 'e','r','a','t','o','r' },12 },
 };
 
-int main()
+int InputHandler()
 {
 	cout << "Enter the number of guesses allowed" << endl;
-	int numberOfGueses = 5;
+	int numberOfGueses;
 	cin >> numberOfGueses;
+	return numberOfGueses;
+}
 
-	int currNumberWord = rand()%3;
+void GameStart(int numberOfGueses)
+{
+	int currNumberWord = rand() % 3;
 	MyString currWord = DataBase[currNumberWord];
-	MyString knownSymbols = { new char[100]{currWord.content[0], currWord.content[currWord.length-1]},2};
-	
+	MyString knownSymbols = { new char[100]{ currWord.content[0]},1 };
+
+	//there is the possibility of equal first and last symbol
+	if (currWord.content[currWord.length - 1] != currWord.content[0])
+	{
+		knownSymbols.content[1] = currWord.content[currWord.length - 1];
+		knownSymbols.length = 2;
+	}
+
 
 	while (numberOfGueses != 0)
 	{
@@ -46,7 +57,7 @@ int main()
 		char gues;
 		cin >> gues;
 		bool isNew = true;
-		
+
 		//check if it is already guessed;
 		for (size_t i = 0; i < knownSymbols.length; i++)
 		{
@@ -57,7 +68,7 @@ int main()
 			}
 		}
 		bool success = false;
-		if(isNew)
+		if (isNew)
 		{
 			for (size_t i = 1; i < currWord.length; i++)
 			{
@@ -66,6 +77,7 @@ int main()
 					knownSymbols.content[knownSymbols.length] = gues;
 					knownSymbols.length++;
 					success = true;
+					break;
 				}
 			}
 		}
@@ -80,24 +92,32 @@ int main()
 				{
 					cout << currWord.content[i];
 				}
-				cout <<"' ."<< endl;
+				cout << "' ." << endl;
 				break;
 			}
 			else
 			{
 				cout << "Success!" << endl;
 			}
-			
+
 		}
 		else
 		{
 			numberOfGueses--;
 			cout << "Error!" << endl;
 		}
-		
 
-	} 
+
+	}
 	if (numberOfGueses == 0) cout << "You Lost!" << endl;
+
+}
+
+int main()
+{
+	int numberOfGueses = InputHandler();
+
+	GameStart(numberOfGueses);
 	
 	return main();
 }
