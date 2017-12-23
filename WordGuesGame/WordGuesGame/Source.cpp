@@ -10,8 +10,14 @@ struct MyString
 MyString DataBase[100] =
 {
 	{ new char[4]{ 't','e','s', 't' },4 },
-	{ new char[7]{ 's','t','u','d','e','n', 't' },7},
-	{ new char[12]{ 'r','e','f','r','i','g', 'e','r','a','t','o','r' },12 },
+	{ new char[7]{ 's','t','u','d','e','n','t' },7},
+	{ new char[12]{ 'r','e','f','r','i','g','e','r','a','t','o','r' },12 },
+	{ new char[7]{ 'r','e','f','u','g','e','e'},7 },
+	{ new char[7]{ 'r','e','f','r','e','s','h'},7 },
+	{ new char[9]{ 'v','a','n','d','a','l', 'i','s','m'},9 },
+	{ new char[11]{ 'd','e','s','t','r','u','c','t','i','o','n' },11 },
+	{ new char[8]{ 'h','u','m','a','n','i','t','y'},8 },
+
 };
 
 int InputHandler()
@@ -24,7 +30,7 @@ int InputHandler()
 
 void GameStart(int numberOfGueses)
 {
-	int currNumberWord = rand() % 3;
+	int currNumberWord = rand()%8;
 	MyString currWord = DataBase[currNumberWord];
 	MyString knownSymbols = { new char[100]{ currWord.content[0]},1 };
 
@@ -35,7 +41,31 @@ void GameStart(int numberOfGueses)
 		knownSymbols.length = 2;
 	}
 
+	//we need to know the number of uniqe symbols
+	char uniqeSymbols[100];
+	int numberOfUniqe = 0;
+	for (size_t i = 0; i < currWord.length; i++)
+	{
+		bool isUniqe = true;
+		for (size_t j = 0; j < numberOfUniqe; j++)
+		{
+		//	cout << "word ->" << currWord.content[i] << endl;
+		//	cout << "un -> " << uniqeSymbols[j];
+			if (currWord.content[i] == uniqeSymbols[j])
+			{
+				isUniqe = false;
+				break;
+			}
+		}
+		if (isUniqe)
+		{
+			uniqeSymbols[numberOfUniqe] = currWord.content[i];
+			numberOfUniqe++;
+		}
+	}
 
+	numberOfUniqe -= knownSymbols.length;
+	
 	while (numberOfGueses != 0)
 	{
 		for (size_t i = 0; i < currWord.length; i++)
@@ -84,7 +114,9 @@ void GameStart(int numberOfGueses)
 
 		if (success)
 		{
-			if (knownSymbols.length == currWord.length)
+			numberOfUniqe--;
+			//cout << "  " << numberOfUniqe << endl;
+			if (numberOfUniqe==0)
 			{
 				cout << "Congratulations, you win!" << endl;
 				cout << "The word is '";
