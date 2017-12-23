@@ -13,32 +13,32 @@
 */
 
 #include<iostream>
+#include<iomanip>
+#include<algorithm>
 using namespace std;
 
 int const NUMBER_OF_SPLITTERS = 7;
+char const HORIZONTAL_LINE_CHAR = '-';
+char const VERTICAL_LINE_CHAR = '|';
 
 struct MyString
 {
-	char content[100];
+	char * content;
 	int length;
 };
 
 char Splitters[7] = { ' ', '!',',','.','?',';',':' };
 
-MyString * InputHandler()
+void InputHandler(MyString * input)
 {
-	char data[100];
-	int itt = 0;
 	char currSymbol;
 	cin >> currSymbol;
-	while (currSymbol!='\n')
+	while (currSymbol!='\n' && currSymbol != '\r')
 	{
-		data[itt] = currSymbol;
-		itt++;
-		cin >> currSymbol;
+		(input->content)[input->length] = currSymbol;
+		input->length++;
+		currSymbol = getchar();
 	}
-	MyString input = { *data,itt };
-	return &input;
 }
 
 bool IsSplitter(char a)
@@ -50,9 +50,8 @@ bool IsSplitter(char a)
 	return false;
 }
 
-void Split(MyString * input)
+int Split(MyString * input)
 {
-	//MyString splittedData[100];
 	int longestPart = 0;
 	int currLenght = 0;
 	for (size_t i = 0; i < input->length; i++)
@@ -71,17 +70,68 @@ void Split(MyString * input)
 			currLenght++;
 		}
 	}
+	
+
+	return max(longestPart,currLenght);
 }
 
-void Print(MyString * input)
+void PrintHorizontalLine(char a, int number)
 {
+	for (size_t i = 0; i < number; i++)
+	{
+		cout << a;
+	}
+	cout << endl;
+}
 
+void Print(MyString * input, int spacing)
+{
+	//top
+	PrintHorizontalLine(HORIZONTAL_LINE_CHAR, spacing + 2);
+
+	//the current reading position
+	int position = 0;
+
+	while (position<input->length)
+	{
+		//we skip the splitters who are marked with 0 (null)
+		while (input->content[position] == 0)
+		{
+			position++;
+		}
+		//if we reach the end break
+		if (position >= input->length) break;
+
+		//cell border
+		cout << VERTICAL_LINE_CHAR;
+		
+		//a new word is printed
+		int len = 0;
+		while (input->content[position]!=0 && position<input->length)
+		{
+			cout << input->content[position];
+			position++;
+			len++;
+		}
+		cout.width(spacing - len +1 );
+
+		//cell border 
+		cout << VERTICAL_LINE_CHAR<<endl;
+
+	}
+	//bottom
+	PrintHorizontalLine('-', spacing + 2);	
 }
 
 
 int main()
 {
-	MyString * input = InputHandler();
-	Split(input);
-	Print(input);
+	MyString input = { new char[100], 0 };
+	
+	InputHandler(&input);
+	int spacing = Split(&input);
+
+	Print(&input, spacing);
+	//system("pause");
+	return main();
 }
