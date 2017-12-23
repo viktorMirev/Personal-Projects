@@ -46,7 +46,10 @@ int InputHandler()
 void GameStart(int numberOfGueses)
 {
 	int currNumberWord = rand() % 8;
+	//the time when we use the database (only in this func)
 	MyString currWord = DataBase[currNumberWord];
+
+	//here are saved the guessed words
 	MyString knownSymbols = { new char[100]{ currWord.content[0]},1 };
 
 	//there is the possibility of equal first and last symbol
@@ -77,6 +80,7 @@ void GameStart(int numberOfGueses)
 		}
 	}
 
+	//here the number of uniqe is lowered because the first and the second are already found
 	numberOfUniqe -= knownSymbols.length;
 
 	while (numberOfGueses != 0)
