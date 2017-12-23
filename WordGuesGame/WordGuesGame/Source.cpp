@@ -1,3 +1,18 @@
+/**
+*
+* Solution to second homework task
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2017/2018
+*
+* @author VIktor Mirev
+* @idnumber 62231
+* @task 1
+* @compiler VC
+*
+*/
+
+
 #include<iostream>
 using namespace std;
 
@@ -22,15 +37,15 @@ MyString DataBase[100] =
 
 int InputHandler()
 {
-	cout << "Enter the number of guesses allowed" << endl;
 	int numberOfGueses;
+	cout << "Enter the number of guesses allowed" << endl;
 	cin >> numberOfGueses;
 	return numberOfGueses;
 }
 
 void GameStart(int numberOfGueses)
 {
-	int currNumberWord = rand()%8;
+	int currNumberWord = rand() % 8;
 	MyString currWord = DataBase[currNumberWord];
 	MyString knownSymbols = { new char[100]{ currWord.content[0]},1 };
 
@@ -49,8 +64,6 @@ void GameStart(int numberOfGueses)
 		bool isUniqe = true;
 		for (size_t j = 0; j < numberOfUniqe; j++)
 		{
-		//	cout << "word ->" << currWord.content[i] << endl;
-		//	cout << "un -> " << uniqeSymbols[j];
 			if (currWord.content[i] == uniqeSymbols[j])
 			{
 				isUniqe = false;
@@ -65,7 +78,7 @@ void GameStart(int numberOfGueses)
 	}
 
 	numberOfUniqe -= knownSymbols.length;
-	
+
 	while (numberOfGueses != 0)
 	{
 		for (size_t i = 0; i < currWord.length; i++)
@@ -115,8 +128,7 @@ void GameStart(int numberOfGueses)
 		if (success)
 		{
 			numberOfUniqe--;
-			//cout << "  " << numberOfUniqe << endl;
-			if (numberOfUniqe==0)
+			if (numberOfUniqe == 0)
 			{
 				cout << "Congratulations, you win!" << endl;
 				cout << "The word is '";
@@ -150,6 +162,6 @@ int main()
 	int numberOfGueses = InputHandler();
 
 	GameStart(numberOfGueses);
-	
-	return main();
+
+	return 0;
 }
