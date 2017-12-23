@@ -133,5 +133,5 @@ int main()
 
 	Print(&input, spacing);
 	//system("pause");
-	return main();
+	return 0;
 }
