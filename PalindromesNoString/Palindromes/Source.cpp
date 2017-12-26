@@ -25,13 +25,13 @@ struct MyString
 };
 
 //checks if a substring is a palindrome
-bool IsPalindrome(int left, int length,MyString * text)
+bool IsPalindrome(int left, int right ,MyString * text)
 {
-	int halfLength = length/2;
+	int halfLength = (right-left)/2;
 	int itt = 0;
-	for (size_t i = left; i <=left + halfLength; i++)
+	for (size_t i = left; i <= halfLength + left; i++)
 	{
-		if (text->content[i] != text->content[left + length-1-itt])
+		if (text->content[i] != text->content[right-1-itt])
 		{
 			return false;
 		}
@@ -40,16 +40,16 @@ bool IsPalindrome(int left, int length,MyString * text)
 	return true;
 }
 
-void SubstringValueCopy(int left, int len, MyString * text, MyString * palindrome)
+void SubstringValueCopy(int left, int right, MyString * text, MyString * palindrome)
 {
 	int writePosition = 0;
 	palindrome->content = new char[100];
-	for (size_t i = left; i < left+len; i++)
+	for (size_t i = left; i < right; i++)
 	{
 		palindrome->content[writePosition] = text->content[i];
 		writePosition++;
 	}
-	palindrome->length = len;
+	palindrome->length = right-left;
 	palindrome->numberOfOccurrences = 1;
 }
 
@@ -77,15 +77,15 @@ int CountPalindromes(MyString * text, MyString palindromes[100])
 		for (int i = 2; i <= length-startPosition; i++)
 		{
 			//left & right borders are the boundaries of the substring
-			int currLength = i;
+			int currRight = i+startPosition;
 			int currLeft = startPosition;
-			if (IsPalindrome(currLeft,currLength, text))
+			if (IsPalindrome(currLeft,currRight, text))
 			{
 				bool isAlreadyFound = false;
 				//check
 				for (int j = 0; j < count; j++)
 				{
-					if (SubstringEquality(currLeft,currLength, text, &palindromes[j]))
+					if (SubstringEquality(currLeft,currRight, text, &palindromes[j]))
 					{
 						palindromes[j].numberOfOccurrences++;
 						isAlreadyFound = true;
@@ -95,7 +95,7 @@ int CountPalindromes(MyString * text, MyString palindromes[100])
 
 				if (!isAlreadyFound)
 				{
-					SubstringValueCopy(currLeft, currLength, text, &palindromes[count]);
+					SubstringValueCopy(currLeft, currRight, text, &palindromes[count]);
 					count++;
 				}
 				
