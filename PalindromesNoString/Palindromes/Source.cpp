@@ -21,22 +21,47 @@ struct MyString
 {
 	char * content;
 	int length = 0;
+	int numberOfOccurrences = 0;
 };
 
 //checks if a substring is a palindrome
-bool IsPalindrome(string & text)
+bool IsPalindrome(int left, int right,MyString * text)
 {
-	int textLength = text.length();
+	/*int textLength = text.length();
 	for (size_t i = 0; i < textLength/2; i++)
 	{
 		if (text[i] != text[textLength - 1 - i]) return false;
 	}
+	return true;*/
+}
+
+void SubstringValueCopy(int left, int right, MyString * text, MyString * palindrome)
+{
+	int writePosition = 0;
+	for (size_t i = left; i < right; i++)
+	{
+		palindrome->content[writePosition] = text->content[i];
+		writePosition++;
+	}
+	palindrome->length = (right - left);
+	palindrome->numberOfOccurrences = 1;
+}
+
+bool SubstringEquality(int left, int right, MyString * text, MyString *  palindrome)
+{
+	if (palindrome->length != right - left) return false;
+
+	int palindromePosition = 0;
+	for (size_t i = left; i < right; i++)
+	{
+		if (palindrome->content[palindromePosition] != text->content[i]) return false;
+		palindromePosition++;
+	}
 	return true;
 }
 
-
 //gets all substrings and test them for palindromness
-int CountPalindromes(MyString * text)
+int CountPalindromes(MyString * text, MyString palindromes[100])
 {
 	int count = 0;
 	int startPosition = 0;
@@ -45,16 +70,18 @@ int CountPalindromes(MyString * text)
 	{
 		for (int i = 2; i <= length-startPosition; i++)
 		{
-			string currSub = text.substr(startPosition, i);
-			if (IsPalindrome(currSub))
+			//left & right borders are the boundaries of the substring
+			int currRight = i+startPosition;
+			int currLeft = startPosition;
+			if (IsPalindrome(currLeft,currRight, text))
 			{
 				bool isAlreadyFound = false;
 				//check
 				for (int j = 0; j < count; j++)
 				{
-					if (palindromes[j].content == currSub)
+					if (SubstringEquality(currLeft,currRight, text, &palindromes[j]))
 					{
-						palindromes[j].count++;
+						palindromes[j].numberOfOccurrences++;
 						isAlreadyFound = true;
 						break;
 					}
@@ -62,8 +89,7 @@ int CountPalindromes(MyString * text)
 
 				if (!isAlreadyFound)
 				{
-					palindromes[count].content = currSub;
-					palindromes[count].count = 1;
+					SubstringValueCopy(currLeft, currRight, text, &palindromes[count]);
 					count++;
 				}
 				
@@ -73,7 +99,7 @@ int CountPalindromes(MyString * text)
 	}
 	return count;
 }
-void PrintResult(MyPalindrome palindromes[100], int count)
+void PrintResult(MyString palindromes[100], int count)
 {
 	if (count == 0)
 	{
@@ -103,12 +129,15 @@ void InputHandle(MyString * text)
 
 int main()
 {
+	//input text
 	MyString text = { new char[100],0};
-
+	//here we save the palindromes we found
+	MyString palindromes[100];
 	cout << "Please enter the text for check if it contains palindromes" << endl;
+
 	InputHandle(&text);
 
-	int numberOfPalindormes = CountPalindromes(&text);
+	int numberOfPalindormes = CountPalindromes(&text,palindromes);
 
 	PrintResult(palindromes, numberOfPalindormes);
 	system("pause");
