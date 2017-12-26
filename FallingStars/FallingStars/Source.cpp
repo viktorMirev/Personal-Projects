@@ -18,15 +18,15 @@
 using namespace std;
 
 //CONSTANTS
-int const MAXIMUM_STAR_NUMBER = 30;
-int const MINIMUM_STAR_NUMBER = 8;
-int const CONSOLE_WIDTH = 100;
-int const CONSOLE_HEIGHT = 25;
-int const MINIMUM_DISTANCE = 6;
-int const MAXIMUM_DISTANCE = 35;//25
-int const STAR_LENGTH = 2;
-int const FRAME_DELAY = 0;
-int const WIND_SPEED = 1;
+int const MAXIMUM_STAR_NUMBER = 80;
+int const MINIMUM_STAR_NUMBER = 3;
+int const CONSOLE_WIDTH = 80;//better 100
+int const CONSOLE_HEIGHT = 25;//better 40
+int const MINIMUM_DISTANCE = 2;
+int const MAXIMUM_DISTANCE = 25;//better 35
+int const STAR_LENGTH = 6;//better 2
+int const FRAME_DELAY = 10;
+int const WIND_SPEED = 0; //better 1
 
 //SOME ADDITIONAL INTRO CONSTANTS
 int const FINAL_DELAY = 2000;
@@ -54,6 +54,15 @@ void LetItSnow(char* symbol, int* numberOfStars);
 void LetItSnow(char* symbol, int* numberOfStars);
 void FunnyIntro();
 
+int main()
+{
+	int numberOfStars = 0;
+	char symbol;
+	InputHandler(&symbol, &numberOfStars);
+	//FunnyIntro();
+	LetItSnow(&symbol, &numberOfStars);
+	return 0;
+}
 
 //User interface and data validation
 void InputHandler(char* symbol, int* numberOfStars)
@@ -154,12 +163,3 @@ void FunnyIntro()
 }
 
 
-int main()
-{
-	int numberOfStars = 0;
-	char symbol;
-	InputHandler(&symbol, &numberOfStars);
-	FunnyIntro();
-	LetItSnow(&symbol, &numberOfStars);
-	return 0;
-}
