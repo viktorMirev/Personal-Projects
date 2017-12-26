@@ -17,6 +17,7 @@
 
 using namespace std;
 
+//technically no string used
 struct MyString
 {
 	char * content;
@@ -24,7 +25,44 @@ struct MyString
 	int numberOfOccurrences = 0;
 };
 
+//FUNCTIONS
+
 //checks if a substring is a palindrome
+bool IsPalindrome(int left, int right, MyString * text);
+
+//copies the value of sub with borders LEFT & RIGHT from text to MyString variable
+void SubstringValueCopy(int left, int right, MyString * text, MyString * palindrome);
+
+//checks if sub with borders LEFT & RIGHT from text is equal to MyString var
+bool SubstringEquality(int left, int right, MyString * text, MyString *  palindrome);
+
+//gets all substrings and test them for palindromness
+int CountPalindromes(MyString * text, MyString palindromes[100]);
+
+//Prints the answer
+void PrintResult(MyString palindromes[100], int count);
+
+//Gets the text
+void InputHandle(MyString * text);
+
+
+int main()
+{
+	//input text
+	MyString text = { new char[100],0 };
+	//here we save the palindromes we found
+	MyString palindromes[100];
+
+	InputHandle(&text);
+
+	int numberOfPalindormes = CountPalindromes(&text, palindromes);
+
+	PrintResult(palindromes, numberOfPalindormes);
+	//system("pause");
+	return 0;
+}
+
+
 bool IsPalindrome(int left, int right ,MyString * text)
 {
 	int halfLength = (right-left)/2;
@@ -66,7 +104,6 @@ bool SubstringEquality(int left, int right, MyString * text, MyString *  palindr
 	return true;
 }
 
-//gets all substrings and test them for palindromness
 int CountPalindromes(MyString * text, MyString palindromes[100])
 {
 	int count = 0;
@@ -105,6 +142,7 @@ int CountPalindromes(MyString * text, MyString palindromes[100])
 	}
 	return count;
 }
+
 void PrintResult(MyString palindromes[100], int count)
 {
 	if (count == 0)
@@ -128,6 +166,7 @@ void PrintResult(MyString palindromes[100], int count)
 
 void InputHandle(MyString * text)
 {
+	cout << "Please enter the text for check if it contains palindromes" << endl;
 	char currSymbol;
 	currSymbol = getchar();
 	while (currSymbol != '\n' && currSymbol != '\r')
@@ -138,20 +177,3 @@ void InputHandle(MyString * text)
 	}
 }
 
-int main()
-{
-	//input text
-	MyString text = { new char[100],0};
-	//here we save the palindromes we found
-	MyString palindromes[100];
-	cout << "Please enter the text for check if it contains palindromes" << endl;
-
-	InputHandle(&text);
-
-	int numberOfPalindormes = CountPalindromes(&text,palindromes);
-
-	PrintResult(palindromes, numberOfPalindormes);
-	system("pause");
-	return 0;
-	
-}
