@@ -22,17 +22,18 @@ struct MyString
 	int length;
 };
 
-MyString DataBase[100] =
+MyString DataBase[10] =
 {
 	{ new char[4]{ 't','e','s', 't' },4 },
 	{ new char[7]{ 's','t','u','d','e','n','t' },7},
 	{ new char[12]{ 'r','e','f','r','i','g','e','r','a','t','o','r' },12 },
 	{ new char[7]{ 'r','e','f','u','g','e','e'},7 },
+	{ new char[9]{ 'a','b','a','n','d','o','n','e','d' },9 },
 	{ new char[7]{ 'r','e','f','r','e','s','h'},7 },
 	{ new char[9]{ 'v','a','n','d','a','l', 'i','s','m'},9 },
 	{ new char[11]{ 'd','e','s','t','r','u','c','t','i','o','n' },11 },
 	{ new char[8]{ 'h','u','m','a','n','i','t','y'},8 },
-
+	{ new char[12]{ 's','a','t','i','s','f','a','c','t', 'i', 'o','n' },12 }
 };
 
 int InputHandler()
@@ -45,7 +46,11 @@ int InputHandler()
 
 void GameStart(int numberOfGueses)
 {
-	int currNumberWord = rand() % 8;
+	//to be real rand
+	int currNumberWord = rand();
+	currNumberWord = rand();
+	currNumberWord %= 10;
+
 	//the time when we use the database (only in this func)
 	MyString currWord = DataBase[currNumberWord];
 
