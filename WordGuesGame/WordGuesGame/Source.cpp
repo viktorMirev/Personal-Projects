@@ -14,6 +14,7 @@
 
 
 #include<iostream>
+#include<ctime>
 using namespace std;
 
 struct MyString
@@ -22,7 +23,7 @@ struct MyString
 	int length;
 };
 
-MyString DataBase[10] =
+MyString DataBase[30] =
 {
 	{ new char[4]{ 't','e','s', 't' },4 },
 	{ new char[7]{ 's','t','u','d','e','n','t' },7},
@@ -33,7 +34,27 @@ MyString DataBase[10] =
 	{ new char[9]{ 'v','a','n','d','a','l', 'i','s','m'},9 },
 	{ new char[11]{ 'd','e','s','t','r','u','c','t','i','o','n' },11 },
 	{ new char[8]{ 'h','u','m','a','n','i','t','y'},8 },
-	{ new char[12]{ 's','a','t','i','s','f','a','c','t', 'i', 'o','n' },12 }
+	{ new char[12]{ 's','a','t','i','s','f','a','c','t', 'i', 'o','n' },12 },
+	{ new char[10]{ "bumblebee"}, 9},
+	{ new char[6]{  "turbo" },5 },
+	{ new char[4]{  "car" }, 3 },
+	{ new char[9]{  "emotions" }, 8 },
+	{ new char[11]{ "atmosphere" }, 10 },
+	{ new char[7]{ "source" },6 },
+	{ new char[5]{ "plus" }, 4 },
+	{ new char[7]{ "qwerty" }, 6 },
+	{ new char[7]{ "stress" }, 6 },
+	{ new char[9]{ "lepricon" }, 8 },
+	{ new char[9]{ "solution" }, 8 },
+	{ new char[7]{ "window" }, 6 },
+	{ new char[6]{ "widow" }, 5 },
+	{ new char[8]{ "project" }, 7 },
+	{ new char[11]{ "properties" }, 10 },
+	{ new char[7]{ "panzer" }, 6 },
+	{ new char[9]{ "debugger" }, 8 },
+	{ new char[14]{ "paraphernalia" }, 13 },
+	{ new char[9]{ "idiotism" }, 8 },
+	{ new char[13]{ "constipation" }, 12 },
 };
 
 int InputHandler()
@@ -47,9 +68,9 @@ int InputHandler()
 void GameStart(int numberOfGueses)
 {
 	//to be real rand
+	srand(time(0));
 	int currNumberWord = rand();
-	currNumberWord = rand();
-	currNumberWord %= 10;
+	currNumberWord %= 30;
 
 	//the time when we use the database (only in this func)
 	MyString currWord = DataBase[currNumberWord];
