@@ -17,7 +17,7 @@
 #include<algorithm>
 using namespace std;
 
-int const NUMBER_OF_SPLITTERS = 7;
+int const NUMBER_OF_SPLITTERS = 17;
 char const HORIZONTAL_LINE_CHAR = '-';
 char const VERTICAL_LINE_CHAR = '|';
 
@@ -27,7 +27,8 @@ struct MyString
 	int length;
 };
 
-char Splitters[7] = { ' ', '!',',','.','?',';',':' };
+//due to a lack of specifications for the splitters we add more
+char Splitters[NUMBER_OF_SPLITTERS] = { ' ', '!',',','.','?',';',':','\t','\'','\"','-','(',')','[',']','{','}' };
 
 void InputHandler(MyString * input)
 {
@@ -132,6 +133,6 @@ int main()
 	int spacing = Split(&input);
 
 	Print(&input, spacing);
-	//system("pause");
+	system("pause");
 	return 0;
 }
