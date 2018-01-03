@@ -18,8 +18,8 @@
 
 using namespace std;
 
-char const MAX_INT_AS_STRING[11] = { "2147483647" };
-char const MIN_INT_AS_STRING[11] = { "2147483648" };
+char const MAX_INT_AS_STRING[11] = { "4294967296" };
+char const MIN_INT_AS_STRING[11] = { "4294967296" };
 int const INT_MAX_NUMBER_OF_DIGITS = 10;
 
 //functions
