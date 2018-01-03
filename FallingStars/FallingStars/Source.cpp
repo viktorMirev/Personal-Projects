@@ -47,15 +47,22 @@ struct FallingStar
 	}
 };
 
+//GLOBAL
+char blankBuffer[CONSOLE_HEIGHT][CONSOLE_WIDTH];
+
+
 //FUNCTIONS
 void InputHandler(char* symbol, int* numberOfStars);
 void LetItDraw(FallingStar stars[MAXIMUM_STAR_NUMBER], int* numberOfStars, char* symbol);
 void LetItSnow(char* symbol, int* numberOfStars);
 void LetItSnow(char* symbol, int* numberOfStars);
 void FunnyIntro();
+void ClearScreen();
+
 
 int main()
 {
+	memset(blankBuffer, ' ', CONSOLE_WIDTH*CONSOLE_HEIGHT);
 	int numberOfStars = 0;
 	char symbol;
 	InputHandler(&symbol, &numberOfStars);
@@ -77,27 +84,34 @@ void InputHandler(char* symbol, int* numberOfStars)
 	cin >> *symbol;
 }
 
+//faster than system("cls");
+void ClearScreen()
+{
+	HANDLE STD_HANDLE = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD startPos = { 0,0 };
+	SetConsoleCursorPosition(STD_HANDLE, startPos);
+
+	WriteConsole(GetStdHandle(STD_OUTPUT_HANDLE), blankBuffer, CONSOLE_WIDTH*CONSOLE_HEIGHT,0,0);
+}
 
 void LetItDraw(FallingStar stars[MAXIMUM_STAR_NUMBER], int* numberOfStars, char* symbol)
 {
 	HANDLE STD_HANDLE = GetStdHandle(STD_OUTPUT_HANDLE);
 	Sleep(FRAME_DELAY);
+	//ClearScreen();
 	system("cls");
 
 	for (size_t i = 0; i < *numberOfStars; i++)
 	{
 		int x = stars[i].x;
 		int y = stars[i].y;
-		for (size_t i = 0; i < STAR_LENGTH; i++)
+		for (size_t j = 0; j < STAR_LENGTH; j++)
 		{
 			//I just added wind speed which by default is 0
-			COORD coord = { x-i*WIND_SPEED,y - i };
-			
+			COORD coord = { x-j*WIND_SPEED,y >= j ? y-j:0};
+		
 			SetConsoleCursorPosition(STD_HANDLE, coord);
 			cout << *symbol;
-
-			COORD zero = { 0,0 };
-			SetConsoleCursorPosition(STD_HANDLE, zero);
 		}
 	}
 }
@@ -112,7 +126,7 @@ void LetItSnow(char* symbol, int* numberOfStars)
 			if (stars[i].distance == 0)
 			{
 				stars[i] = FallingStar();
-				stars[i].distance = MINIMUM_DISTANCE + rand() % (MAXIMUM_DISTANCE - MINIMUM_DISTANCE);
+				stars[i].distance = MINIMUM_DISTANCE + rand() % (MAXIMUM_DISTANCE - MINIMUM_DISTANCE+1);
 			}
 		}
 
