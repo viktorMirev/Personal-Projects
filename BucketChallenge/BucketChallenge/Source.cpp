@@ -115,7 +115,15 @@ int Route(int currFirst, int currSecond, int numOfStpes)
 
 int main()
 {
+	cout << "Insert one one line the capacity of the first, the second bucket & the wanted quantity" << endl;
 	cin >> bucketOneCapacity >> bucketTwoCapacity >> wantedCapacity;
-	cout << Route(0, 0, 0);
-	return main();
+	int result = Route(0, 0, 0);
+	swap(bucketOneCapacity, bucketTwoCapacity);
+	result = min(Route(0, 0, 0), result);
+	if (result == MAX_INT) cout << -1 << endl;
+	else
+	{
+		cout << result<<endl;
+	}
+	return 0;
 }
