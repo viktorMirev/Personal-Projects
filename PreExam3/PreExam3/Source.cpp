@@ -22,7 +22,7 @@ void Print(int length, int height,char symbol)
 		//left offset
 		cout << setw(leftOffSet);
 
-		for (size_t i = 0; i < length; i++)
+		for (size_t j = 0; j < length; j++)
 		{
 			cout << symbol;
 		}
