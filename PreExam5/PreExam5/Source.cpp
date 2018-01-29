@@ -10,7 +10,7 @@ int** Sum(int matrix[][MAX], int n)
 	int** t = new int*[n];
 	for (size_t i = 0; i < n; i++)
 	{
-		t[i] = new int[10];
+		t[i] = new int[MAX];
 	}
 
 
