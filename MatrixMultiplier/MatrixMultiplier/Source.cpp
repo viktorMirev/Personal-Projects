@@ -11,6 +11,7 @@ bool HandleInput(int *** matrx1, int *** matrx2, int * m, int * n, int * p, int 
 
 int main()
 {
+
 	int ** matrx1 = 0;
 	int ** matrx2 = 0;
 
@@ -25,14 +26,13 @@ int main()
 	//the multiplied matrix
 	int ** result;
 
-
+	//we use & because the functions need a pointer to a pointer to an array of pointers
 	if (HandleInput(&matrx1, &matrx2, &m, &n, &p, &q))
 	{
 		result = Multiply(matrx1, matrx2, m, n, q);
 	}
 	else
 	{
-		cout << "Bad Input!" << endl;
 		return main();
 	}
 
@@ -107,10 +107,13 @@ so we change the value which the int *** points
 
 bool HandleInput(int *** matrx1, int *** matrx2,int * m, int * n, int * p, int * q)
 {
-	cout << "Insert the dimentions" << endl;
+	cout << "Insert the dimentions of the two matrices" << endl;
 	cin >> *m >> *n >> *p >> *q;
-	if (*p != *n) return false;
-
+	if (*p != *n)
+	{
+		cout << endl << "The second dimention of the first" << endl << "should be the same as the first dimention of the second" << endl << "notherwise it is not defined!" << endl;
+		return false;
+	}
 	cout << endl;
 
 	
