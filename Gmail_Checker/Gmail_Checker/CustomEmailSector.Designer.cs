@@ -52,40 +52,44 @@ namespace Gmail_Checker
             // labelFrom
             // 
             this.labelFrom.AutoSize = true;
-            this.labelFrom.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFrom.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFrom.ForeColor = System.Drawing.Color.White;
             this.labelFrom.Location = new System.Drawing.Point(13, 11);
             this.labelFrom.Name = "labelFrom";
-            this.labelFrom.Size = new System.Drawing.Size(52, 19);
+            this.labelFrom.Size = new System.Drawing.Size(57, 20);
             this.labelFrom.TabIndex = 2;
             this.labelFrom.Text = "Sender";
             // 
             // labelFromText
             // 
             this.labelFromText.AutoSize = true;
-            this.labelFromText.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFromText.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFromText.ForeColor = System.Drawing.Color.Gainsboro;
             this.labelFromText.Location = new System.Drawing.Point(109, 11);
             this.labelFromText.Name = "labelFromText";
-            this.labelFromText.Size = new System.Drawing.Size(145, 19);
+            this.labelFromText.Size = new System.Drawing.Size(162, 20);
             this.labelFromText.TabIndex = 3;
             this.labelFromText.Text = "example.exp@app.net";
             // 
             // labelSubject
             // 
             this.labelSubject.AutoSize = true;
-            this.labelSubject.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSubject.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSubject.ForeColor = System.Drawing.Color.White;
             this.labelSubject.Location = new System.Drawing.Point(13, 30);
             this.labelSubject.Name = "labelSubject";
-            this.labelSubject.Size = new System.Drawing.Size(56, 19);
+            this.labelSubject.Size = new System.Drawing.Size(59, 20);
             this.labelSubject.TabIndex = 4;
             this.labelSubject.Text = "Subject";
             // 
             // labelSubjectText
             // 
             this.labelSubjectText.AutoSize = true;
-            this.labelSubjectText.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSubjectText.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSubjectText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(215)))), ((int)(((byte)(0)))));
             this.labelSubjectText.Location = new System.Drawing.Point(109, 30);
             this.labelSubjectText.Name = "labelSubjectText";
-            this.labelSubjectText.Size = new System.Drawing.Size(34, 19);
+            this.labelSubjectText.Size = new System.Drawing.Size(35, 20);
             this.labelSubjectText.TabIndex = 5;
             this.labelSubjectText.Text = "Test";
             // 
@@ -93,6 +97,7 @@ namespace Gmail_Checker
             // 
             this.labelSnippet.AutoSize = true;
             this.labelSnippet.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSnippet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.labelSnippet.Location = new System.Drawing.Point(12, 60);
             this.labelSnippet.Name = "labelSnippet";
             this.labelSnippet.Size = new System.Drawing.Size(61, 20);
@@ -116,7 +121,7 @@ namespace Gmail_Checker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gray;
+            this.BackColor = System.Drawing.Color.DimGray;
             this.Controls.Add(this.Button_ShowFullMsg);
             this.Controls.Add(this.labelSnippet);
             this.Controls.Add(this.labelSubjectText);

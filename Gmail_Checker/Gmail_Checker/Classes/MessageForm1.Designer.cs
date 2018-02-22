@@ -40,18 +40,21 @@ namespace Gmail_Checker.Classes
             this.customSectorList1.AutoScroll = true;
             this.customSectorList1.Location = new System.Drawing.Point(3, 19);
             this.customSectorList1.Name = "customSectorList1";
-            this.customSectorList1.Size = new System.Drawing.Size(825, 424);
+            this.customSectorList1.Size = new System.Drawing.Size(745, 434);
             this.customSectorList1.TabIndex = 1;
             // 
             // MessageForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(832, 481);
+            this.BackColor = System.Drawing.Color.DarkGray;
+            this.ClientSize = new System.Drawing.Size(742, 469);
             this.Controls.Add(this.customSectorList1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MessageForm1";
+            this.Opacity = 0.93D;
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "Unread Messages";
             this.ResumeLayout(false);
 
