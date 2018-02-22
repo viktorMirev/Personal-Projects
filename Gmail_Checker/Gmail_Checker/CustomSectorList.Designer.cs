@@ -6,6 +6,8 @@ namespace Gmail_Checker
 {
     partial class CustomSectorList
     {
+        private const int ITEM_HEIGHT = 110;
+        private const int SPACING = 10;
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -27,11 +29,15 @@ namespace Gmail_Checker
         public void AddMyControls(IDictionary<string, ICustomMessage> list)
         {
             int i = 0;
+            //adding the custom sectors
             foreach (var msg in list)
             {
                 CustomEmailSector currSector = new CustomEmailSector();
-                currSector.ChangeSnippet(msg.Value.Snippet);
-                currSector.Location = new Point(10, 10 + 110 * i);
+
+                //to be modified for all labels
+                currSector.FillMessageData(msg.Value);
+
+                currSector.Location = new Point(SPACING, SPACING + ITEM_HEIGHT * i);
                 Controls.Add(currSector);
                 i++;
             }

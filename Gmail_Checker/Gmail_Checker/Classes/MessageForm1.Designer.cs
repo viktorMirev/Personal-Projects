@@ -31,49 +31,33 @@ namespace Gmail_Checker.Classes
         /// </summary>
         private void InitializeComponent()
         {
-            this.BOX = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageForm1));
             this.customSectorList1 = new Gmail_Checker.CustomSectorList();
             this.SuspendLayout();
-            // 
-            // BOX
-            // 
-            this.BOX.Location = new System.Drawing.Point(36, 32);
-            this.BOX.Multiline = true;
-            this.BOX.Name = "BOX";
-            this.BOX.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.BOX.Size = new System.Drawing.Size(441, 369);
-            this.BOX.TabIndex = 0;
             // 
             // customSectorList1
             // 
             this.customSectorList1.AutoScroll = true;
-            this.customSectorList1.Location = new System.Drawing.Point(506, 32);
+            this.customSectorList1.Location = new System.Drawing.Point(3, 19);
             this.customSectorList1.Name = "customSectorList1";
-            this.customSectorList1.Size = new System.Drawing.Size(632, 427);
+            this.customSectorList1.Size = new System.Drawing.Size(825, 424);
             this.customSectorList1.TabIndex = 1;
             // 
             // MessageForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1150, 513);
+            this.BackColor = System.Drawing.Color.Silver;
+            this.ClientSize = new System.Drawing.Size(832, 481);
             this.Controls.Add(this.customSectorList1);
-            this.Controls.Add(this.BOX);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MessageForm1";
-            this.Text = "MessageForm1";
+            this.Text = "Unread Messages";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox BOX;
-
-        public void LoadMessages(string data)
-        {
-            this.BOX.Text = data;
-        }
 
         public void LoadSectors(IDictionary<string,ICustomMessage> list)
         {

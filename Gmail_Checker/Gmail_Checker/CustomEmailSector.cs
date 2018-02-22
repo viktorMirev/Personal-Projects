@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Gmail_Checker.Classes;
 
 namespace Gmail_Checker
 {
@@ -15,6 +9,14 @@ namespace Gmail_Checker
         public CustomEmailSector()
         {
             InitializeComponent();
+        }
+
+        private void Button_ShowFullMsg_Click(object sender, EventArgs e)
+        {
+            FullTextMessageForm fullMessageForm = new FullTextMessageForm();
+            fullMessageForm.LoadFullMessageData(this.content,this.sender,this.subject);
+            fullMessageForm.ShowDialog();
+            
         }
     }
 }

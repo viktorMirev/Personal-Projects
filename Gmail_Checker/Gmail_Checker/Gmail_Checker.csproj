@@ -98,6 +98,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\CustomMessage.cs" />
+    <Compile Include="Classes\FullTextMessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Classes\FullTextMessageForm.Designer.cs">
+      <DependentUpon>FullTextMessageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\GmailHandler.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\MessageForm1.cs">
@@ -132,6 +138,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Classes\FullTextMessageForm.resx">
+      <DependentUpon>FullTextMessageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Classes\MessageForm1.resx">
       <DependentUpon>MessageForm1.cs</DependentUpon>
     </EmbeddedResource>

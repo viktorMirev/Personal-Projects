@@ -33,7 +33,6 @@ namespace Gmail_Checker.Classes
                 if (!Compare(unreadMessages))
                 {
                     MessageForm1 f = new MessageForm1();
-                    f.LoadMessages(ListThem());
                     f.LoadSectors(currentMessages);
                     f.ShowDialog();
                     System.Threading.Thread.Sleep(seconds * 1000);
