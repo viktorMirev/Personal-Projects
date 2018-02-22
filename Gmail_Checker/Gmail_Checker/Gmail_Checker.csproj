@@ -79,7 +79,6 @@
   <ItemGroup>
     <Compile Include="Classes\CustomMessage.cs" />
     <Compile Include="Classes\GmailHandler.cs" />
-    <Compile Include="Classes\MessageParser.cs" />
     <Compile Include="Interfaces\ICustomMessage.cs" />
     <Compile Include="Interfaces\IGmailHandler.cs" />
     <Compile Include="Program.cs" />

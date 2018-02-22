@@ -51,7 +51,7 @@ namespace Gmail_Checker.Classes
             ServiseInit();
         }
 
-        public IList<Google.Apis.Gmail.v1.Data.Message> LoadUnreadMesseges()
+        public IList<ICustomMessage> LoadUnreadMesseges()
         {
             var firstMesseges = GetMessegesIDs();
             for (int i = 0; i < firstMesseges.Count; i++)   
@@ -60,7 +60,19 @@ namespace Gmail_Checker.Classes
                 firstMesseges[i] = reqest.Execute();
             }
 
-            return firstMesseges.Where(t => (t.LabelIds.Contains("UNREAD") &&( !t.LabelIds.Contains("CATEGORY_PROMOTIONS") && !t.LabelIds.Contains("CATEGORY_SOCIAL")))).ToList();
+            IList<ICustomMessage> finalList = new List<ICustomMessage>();
+
+            for (int i = 0; i < firstMesseges.Count; i++)
+            {
+                if((firstMesseges[i].LabelIds.Contains("UNREAD") &&
+                    (!firstMesseges[i].LabelIds.Contains("CATEGORY_PROMOTIONS") && 
+                    !firstMesseges[i].LabelIds.Contains("CATEGORY_SOCIAL"))))
+                {
+                    finalList.Add(new CustomMessage(firstMesseges[i]));
+                }
+            }
+
+            return finalList;
         }
 
         private IList<Google.Apis.Gmail.v1.Data.Message> GetMessegesIDs()
