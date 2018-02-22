@@ -12,7 +12,7 @@ namespace Gmail_Checker.Classes
 {
     public class GmailHandler : IGmailHandler
     {
-        private const int NUMBER_OF_UNREAD_MESSEGES = 50;
+        private const int NUMBER_OF_MESSEGES_TO_CHECK = 50;
 
         private string[] scopes = { GmailService.Scope.GmailReadonly };
         private string applicationName = "Gmail API .NET Quickstart";
@@ -53,25 +53,24 @@ namespace Gmail_Checker.Classes
 
         public IList<Google.Apis.Gmail.v1.Data.Message> LoadUnreadMesseges()
         {
-            var unreadMesseges = GetUnreadMessegesIDs();
-            for (int i = 0; i < unreadMesseges.Count; i++)   
+            var firstMesseges = GetMessegesIDs();
+            for (int i = 0; i < firstMesseges.Count; i++)   
             {
-                var reqest = service.Users.Messages.Get("me", unreadMesseges[i].Id);
-                unreadMesseges[i] = reqest.Execute();
+                var reqest = service.Users.Messages.Get("me", firstMesseges[i].Id);
+                firstMesseges[i] = reqest.Execute();
             }
 
-            return unreadMesseges;
+            return firstMesseges.Where(t => (t.LabelIds.Contains("UNREAD") &&( !t.LabelIds.Contains("CATEGORY_PROMOTIONS") && !t.LabelIds.Contains("CATEGORY_SOCIAL")))).ToList();
         }
 
-        private IList<Google.Apis.Gmail.v1.Data.Message> GetUnreadMessegesIDs()
+        private IList<Google.Apis.Gmail.v1.Data.Message> GetMessegesIDs()
         {
             //creatingRequest
             UsersResource.MessagesResource.ListRequest request = service.Users.Messages.List("me");
 
             return request
                 .Execute().Messages
-                .Where(t => t.LabelIds.Contains("UNREAD"))
-                .Take(NUMBER_OF_UNREAD_MESSEGES)
+                .Take(NUMBER_OF_MESSEGES_TO_CHECK)
                 .ToList();
         }
     }
