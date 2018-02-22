@@ -77,8 +77,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\CustomMessage.cs" />
     <Compile Include="Classes\GmailHandler.cs" />
-    <Compile Include="Classes\MessegeParser.cs" />
+    <Compile Include="Classes\MessageParser.cs" />
+    <Compile Include="Interfaces\ICustomMessage.cs" />
     <Compile Include="Interfaces\IGmailHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

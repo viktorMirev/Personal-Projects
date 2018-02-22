@@ -8,6 +8,7 @@ public class Program
     {
         IGmailHandler test = new GmailHandler();
         test.Init();
+
         var testList = test.LoadUnreadMesseges();
         int count = 0;
         foreach (var msg in testList)
