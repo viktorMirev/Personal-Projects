@@ -1,9 +1,6 @@
 ﻿using Gmail_Checker.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Gmail_Checker.Classes
 {
@@ -37,6 +34,7 @@ namespace Gmail_Checker.Classes
                 {
                     MessageForm1 f = new MessageForm1();
                     f.LoadMessages(ListThem());
+                    f.LoadSectors(currentMessages);
                     f.ShowDialog();
                     System.Threading.Thread.Sleep(seconds * 1000);
                 }

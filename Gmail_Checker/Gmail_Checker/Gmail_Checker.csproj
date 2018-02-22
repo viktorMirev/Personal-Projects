@@ -112,6 +112,12 @@
     <Compile Include="CustomEmailSector.Designer.cs">
       <DependentUpon>CustomEmailSector.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomSectorList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomSectorList.Designer.cs">
+      <DependentUpon>CustomSectorList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\ICustomMessage.cs" />
     <Compile Include="Interfaces\IGmailHandler.cs" />
     <Compile Include="Interfaces\IManager.cs" />
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomEmailSector.resx">
       <DependentUpon>CustomEmailSector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomSectorList.resx">
+      <DependentUpon>CustomSectorList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

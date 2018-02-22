@@ -1,4 +1,7 @@
-﻿namespace Gmail_Checker.Classes
+﻿using Gmail_Checker.Interfaces;
+using System.Collections.Generic;
+
+namespace Gmail_Checker.Classes
 {
     partial class MessageForm1
     {
@@ -29,6 +32,7 @@
         private void InitializeComponent()
         {
             this.BOX = new System.Windows.Forms.TextBox();
+            this.customSectorList1 = new Gmail_Checker.CustomSectorList();
             this.SuspendLayout();
             // 
             // BOX
@@ -37,14 +41,23 @@
             this.BOX.Multiline = true;
             this.BOX.Name = "BOX";
             this.BOX.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.BOX.Size = new System.Drawing.Size(846, 428);
+            this.BOX.Size = new System.Drawing.Size(441, 369);
             this.BOX.TabIndex = 0;
+            // 
+            // customSectorList1
+            // 
+            this.customSectorList1.AutoScroll = true;
+            this.customSectorList1.Location = new System.Drawing.Point(506, 32);
+            this.customSectorList1.Name = "customSectorList1";
+            this.customSectorList1.Size = new System.Drawing.Size(632, 427);
+            this.customSectorList1.TabIndex = 1;
             // 
             // MessageForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 506);
+            this.ClientSize = new System.Drawing.Size(1150, 513);
+            this.Controls.Add(this.customSectorList1);
             this.Controls.Add(this.BOX);
             this.Name = "MessageForm1";
             this.Text = "MessageForm1";
@@ -61,7 +74,12 @@
         {
             this.BOX.Text = data;
         }
-        
 
+        public void LoadSectors(IDictionary<string,ICustomMessage> list)
+        {
+            customSectorList1.AddMyControls(list);
+        }
+
+        private CustomSectorList customSectorList1;
     }
 }

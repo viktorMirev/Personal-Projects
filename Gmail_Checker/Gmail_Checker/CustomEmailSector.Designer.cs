@@ -99,7 +99,7 @@
             this.Controls.Add(this.labelFromText);
             this.Controls.Add(this.labelFrom);
             this.Name = "CustomEmailSector";
-            this.Size = new System.Drawing.Size(465, 133);
+            this.Size = new System.Drawing.Size(447, 107);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +113,10 @@
         private System.Windows.Forms.Label labelSubject;
         private System.Windows.Forms.Label labelSubjectText;
         private System.Windows.Forms.Label labelSnippet;
+
+        public void ChangeSnippet(string newSnippet)
+        {
+            this.labelSnippet.Text = newSnippet;
+        }
     }
 }
