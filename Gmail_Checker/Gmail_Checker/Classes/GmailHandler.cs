@@ -1,4 +1,5 @@
-﻿using Google.Apis.Auth.OAuth2;
+﻿using Gmail_Checker.Interfaces;
+using Google.Apis.Auth.OAuth2;
 using Google.Apis.Gmail.v1;
 using Google.Apis.Services;
 using Google.Apis.Util.Store;
@@ -9,8 +10,10 @@ using System.Threading;
 
 namespace Gmail_Checker.Classes
 {
-    public class GmailHandler
+    public class GmailHandler : IGmailHandler
     {
+        private const int NUMBER_OF_UNREAD_MESSEGES = 50;
+
         private string[] scopes = { GmailService.Scope.GmailReadonly };
         private string applicationName = "Gmail API .NET Quickstart";
         private UserCredential credential;
@@ -48,18 +51,28 @@ namespace Gmail_Checker.Classes
             ServiseInit();
         }
 
-        public IList<Google.Apis.Gmail.v1.Data.Message> LoadUnreadMesseges();
+        public IList<Google.Apis.Gmail.v1.Data.Message> LoadUnreadMesseges()
+        {
+            var unreadMesseges = GetUnreadMessegesIDs();
+            for (int i = 0; i < unreadMesseges.Count; i++)   
+            {
+                var reqest = service.Users.Messages.Get("me", unreadMesseges[i].Id);
+                unreadMesseges[i] = reqest.Execute();
+            }
+
+            return unreadMesseges;
+        }
 
         private IList<Google.Apis.Gmail.v1.Data.Message> GetUnreadMessegesIDs()
         {
             //creatingRequest
             UsersResource.MessagesResource.ListRequest request = service.Users.Messages.List("me");
 
-            return request.Execute().Messages.Where(t => t.LabelIds.Contains("UNREAD")).ToList();
+            return request
+                .Execute().Messages
+                .Where(t => t.LabelIds.Contains("UNREAD"))
+                .Take(NUMBER_OF_UNREAD_MESSEGES)
+                .ToList();
         }
-         
-
-
     }
-
 }
