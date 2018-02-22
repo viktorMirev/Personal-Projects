@@ -51,7 +51,7 @@ namespace Gmail_Checker.Classes
             ServiseInit();
         }
 
-        public IList<ICustomMessage> LoadUnreadMesseges()
+        public IDictionary<string,ICustomMessage> LoadUnreadMesseges()
         {
             var firstMesseges = GetMessegesIDs();
             for (int i = 0; i < firstMesseges.Count; i++)   
@@ -60,7 +60,7 @@ namespace Gmail_Checker.Classes
                 firstMesseges[i] = reqest.Execute();
             }
 
-            IList<ICustomMessage> finalList = new List<ICustomMessage>();
+            IDictionary<string,ICustomMessage> finalList = new Dictionary<string,ICustomMessage>();
 
             for (int i = 0; i < firstMesseges.Count; i++)
             {
@@ -68,7 +68,7 @@ namespace Gmail_Checker.Classes
                     (!firstMesseges[i].LabelIds.Contains("CATEGORY_PROMOTIONS") && 
                     !firstMesseges[i].LabelIds.Contains("CATEGORY_SOCIAL"))))
                 {
-                    finalList.Add(new CustomMessage(firstMesseges[i]));
+                    finalList.Add(firstMesseges[i].Id, new CustomMessage(firstMesseges[i]));
                 }
             }
 

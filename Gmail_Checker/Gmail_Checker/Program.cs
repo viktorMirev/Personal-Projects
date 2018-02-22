@@ -6,17 +6,8 @@ public class Program
 {
     static void Main()
     {
-        IGmailHandler test = new GmailHandler();
-        test.Init();
-
-        var testList = test.LoadUnreadMesseges();
-        int count = 0;
-        foreach (var msg in testList)
-        {
-            Console.WriteLine(++count);
-            Console.WriteLine(msg.Id);
-            Console.WriteLine(msg.Snippet);
-        }
+        IManager manager = new Manager();
+        manager.Start(60);
         Console.Read();
     }
 }

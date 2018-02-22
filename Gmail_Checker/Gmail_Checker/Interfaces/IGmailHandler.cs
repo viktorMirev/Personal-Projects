@@ -5,6 +5,6 @@ namespace Gmail_Checker.Interfaces
     public interface IGmailHandler
     {
         void Init();
-        IList<ICustomMessage> LoadUnreadMesseges();
+        IDictionary<string,ICustomMessage> LoadUnreadMesseges();
     }
 }
