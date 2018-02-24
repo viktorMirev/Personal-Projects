@@ -16,5 +16,10 @@ namespace Gmail_Checker.Classes
         {
             InitializeComponent();
         }
+
+        private void MessageForm1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

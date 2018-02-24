@@ -12,7 +12,7 @@ namespace Gmail_Checker.Classes
 {
     public class GmailHandler : IGmailHandler
     {
-        private const int NUMBER_OF_MESSEGES_TO_CHECK = 50;
+        private const int NUMBER_OF_MESSEGES_TO_CHECK = 150;
 
         private string[] scopes = { GmailService.Scope.GmailReadonly };
         private string applicationName = "Gmail API .NET Quickstart";

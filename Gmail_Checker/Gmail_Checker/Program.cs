@@ -7,7 +7,7 @@ public class Program
     static void Main()
     {
         IManager manager = new Manager();
-        manager.Start(20);
+        manager.Start(10);
         Console.Read();
     }
 }
