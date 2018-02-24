@@ -12,42 +12,30 @@ namespace Gmail_Checker.Classes
         {
             this.currentMessages = new Dictionary<string,ICustomMessage>();
             this.gmail = new GmailHandler();
-            gmail.Init();
-        }
-        private string ListThem()
-        {
-            StringBuilder result = new StringBuilder("");
-            foreach (var msg in currentMessages)
-            {
-                result.AppendLine(msg.Key);
-                result.AppendLine(msg.Value.Snippet);
-                result.AppendLine();
-            }
-            return result.ToString();
         }
         public void Start(int seconds)
         {
             while (true)
             {
-                var unreadMessages = gmail.LoadUnreadMesseges();
+                var unreadMessages = gmail.ListUnreadMessages();
                 if (!Compare(unreadMessages))
                 {
-                    MessageForm1 f = new MessageForm1();
-                    f.LoadSectors(currentMessages);
-                    f.ShowDialog();
+                    MessageForm1 currForm = new MessageForm1();
+                    currForm.LoadSectors(currentMessages);
+                    currForm.ShowDialog();
                     System.Threading.Thread.Sleep(seconds * 1000);
                 }
             }
           
         }
 
-        private bool Compare(IDictionary<string, ICustomMessage> dict)
+        private bool Compare(IList<string> unrList)
         {
-            foreach (var msg in dict)
+            foreach (var msg in unrList)
             {
-                if (!this.currentMessages.ContainsKey(msg.Key))
+                if (!this.currentMessages.ContainsKey(msg))
                 {
-                    this.currentMessages = dict;
+                    this.currentMessages = gmail.GetUnreadMessages();
                     return false;
                 }
             }

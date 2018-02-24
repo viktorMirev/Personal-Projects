@@ -1,4 +1,5 @@
 ﻿using Gmail_Checker.Interfaces;
+using MimeKit;
 
 namespace Gmail_Checker.Classes
 {
@@ -39,13 +40,13 @@ namespace Gmail_Checker.Classes
             private set => this.content = value;
         }
 
-        public CustomMessage(Google.Apis.Gmail.v1.Data.Message msg)
+        public CustomMessage(MimeMessage msg)
         {
-            this.Id = msg.Id;
-            this.Snippet = msg.Snippet;
-            this.Content = "Content of the message";
-            this.Sender = "Mr. Sender@ send.mail";
-            this.Subject = "testing d system";
+            this.Id = msg.MessageId;
+            this.Snippet = msg.TextBody.Substring(0,msg.TextBody.IndexOf('.'));
+            this.Content = msg.TextBody;
+            this.Sender = msg.From.ToString();
+            this.Subject = msg.Subject;
         }
 
         public override string ToString()

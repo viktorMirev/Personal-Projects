@@ -1,89 +1,86 @@
-﻿using Gmail_Checker.Interfaces;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Gmail.v1;
-using Google.Apis.Services;
-using Google.Apis.Util.Store;
+﻿
+using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading;
+
+using MimeKit;
+using MailKit;
+using MailKit.Search;
+using MailKit.Security;
+using MailKit.Net.Imap;
+using Gmail_Checker.Interfaces;
 
 namespace Gmail_Checker.Classes
 {
     public class GmailHandler : IGmailHandler
     {
-        private const int NUMBER_OF_MESSEGES_TO_CHECK = 150;
-
-        private string[] scopes = { GmailService.Scope.GmailReadonly };
-        private string applicationName = "Gmail API .NET Quickstart";
-        private UserCredential credential;
-        private GmailService service;
-        private void CredentialInit()
+        /*
+         * create additional list with just ids unfiltered
+         * then you are going to compare with it 
+         * current will be filtered
+         * 
+         * още като се появи разлика добавяй тея дето не си ги срещнал за теглене и тия дето ги няма в новите ги трий
+         * тоест връщай обект с нови и такива за триене и добавяй и трий в manager
+        */
+     
+        public IDictionary<string,ICustomMessage> GetUnreadMessages()
         {
-            using (var stream = new FileStream("Gmail_JSON/client_secret.json", FileMode.Open, FileAccess.Read))
-            {
-                string credPath = System.Environment.GetFolderPath(
-                    System.Environment.SpecialFolder.Personal);
-                credPath = Path.Combine(credPath, ".credentials/gmail-dotnet-quickstart.json");
+            var allUnread = new Dictionary<string, ICustomMessage>();
 
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets,
-                    scopes,
-                    "user",
-                    CancellationToken.None,
-                    new FileDataStore(credPath, true)).Result;
-                //Console.WriteLine("Credential file saved to: " + credPath);
-            }
-        }
-        private void ServiseInit()
-        {
-            service = new GmailService(new BaseClientService.Initializer()
+            using (var client = new ImapClient(new ProtocolLogger("imap.log")))
             {
-                HttpClientInitializer = credential,
-                ApplicationName = applicationName,
-            });
-        }
-        public void Init()
-        {
-            //Initialise credential
-            CredentialInit();
-            // Initialise Gmail API service.
-            ServiseInit();
-        }
+                client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
 
-        public IDictionary<string,ICustomMessage> LoadUnreadMesseges()
-        {
-            var firstMesseges = GetMessegesIDs();
-            for (int i = 0; i < firstMesseges.Count; i++)   
-            {
-                var reqest = service.Users.Messages.Get("me", firstMesseges[i].Id);
-                firstMesseges[i] = reqest.Execute();
-            }
+                client.Authenticate("viktor.mirev@gmail.com", "paraphernalia");
 
-            IDictionary<string,ICustomMessage> finalList = new Dictionary<string,ICustomMessage>();
+                client.Inbox.Open(FolderAccess.ReadOnly);
 
-            for (int i = 0; i < firstMesseges.Count; i++)
-            {
-                if((firstMesseges[i].LabelIds.Contains("UNREAD") &&
-                    (!firstMesseges[i].LabelIds.Contains("CATEGORY_PROMOTIONS") && 
-                    !firstMesseges[i].LabelIds.Contains("CATEGORY_SOCIAL"))))
+                var uids = client.Inbox.Search(SearchQuery.NotSeen);
+
+                int count = 0;
+                foreach (var uid in uids)
                 {
-                    finalList.Add(firstMesseges[i].Id, new CustomMessage(firstMesseges[i]));
-                }
-            }
+                    var message = client.Inbox.GetMessage(uid);
 
-            return finalList;
+                    allUnread.Add(uid.Id.ToString(), new CustomMessage(message));
+
+                    count++;
+                    if (count == 100) { break; }
+                }
+
+                client.Disconnect(true);
+            }
+           
+            
+
+
+
+            return allUnread;
         }
 
-        private IList<Google.Apis.Gmail.v1.Data.Message> GetMessegesIDs()
+        public IList<string> ListUnreadMessages()
         {
-            //creatingRequest
-            UsersResource.MessagesResource.ListRequest request = service.Users.Messages.List("me");
+            var allUnread = new List<string>();
+            using (var client = new ImapClient(new ProtocolLogger("imap.log")))
+            {
+                client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
 
-            return request
-                .Execute().Messages
-                .Take(NUMBER_OF_MESSEGES_TO_CHECK)
-                .ToList();
+                client.Authenticate("viktor.mirev@gmail.com", "paraphernalia");
+
+                client.Inbox.Open(FolderAccess.ReadOnly);
+
+                var uids = client.Inbox.Search(SearchQuery.NotSeen);
+
+                int count = 0;
+                foreach (var uid in uids)
+                {
+                    allUnread.Add(uid.Id.ToString());
+                    count++;
+                    if (count == 100) break;
+                }
+
+                client.Disconnect(true);
+            }
+            return allUnread;
         }
     }
 }
