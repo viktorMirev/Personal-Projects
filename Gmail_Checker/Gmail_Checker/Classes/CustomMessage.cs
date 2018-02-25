@@ -1,5 +1,6 @@
 ﻿using Gmail_Checker.Interfaces;
 using MimeKit;
+using System;
 
 namespace Gmail_Checker.Classes
 {
@@ -43,7 +44,12 @@ namespace Gmail_Checker.Classes
         public CustomMessage(MimeMessage msg)
         {
             this.Id = msg.MessageId;
-            this.Snippet = msg.TextBody.Substring(0,msg.TextBody.IndexOf('.'));
+            if(msg.TextBody.Length!=0)
+            {
+                int index = msg.TextBody.IndexOf('.');
+                if (index < 0) index = 100;
+                this.Snippet = msg.TextBody.Substring(0,Math.Min(index,msg.TextBody.Length-1));
+            }
             this.Content = msg.TextBody;
             this.Sender = msg.From.ToString();
             this.Subject = msg.Subject;

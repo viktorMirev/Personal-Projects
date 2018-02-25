@@ -11,18 +11,12 @@ using Gmail_Checker.Interfaces;
 
 namespace Gmail_Checker.Classes
 {
+    
     public class GmailHandler : IGmailHandler
     {
-        /*
-         * create additional list with just ids unfiltered
-         * then you are going to compare with it 
-         * current will be filtered
-         * 
-         * още като се появи разлика добавяй тея дето не си ги срещнал за теглене и тия дето ги няма в новите ги трий
-         * тоест връщай обект с нови и такива за триене и добавяй и трий в manager
-        */
-     
-        public IDictionary<string,ICustomMessage> GetUnreadMessages()
+        private const int MAXIMUM_AGE_OF_MESSAGES_DAYS = 40;
+
+        public IDictionary<string, ICustomMessage> GetUnreadMessages()
         {
             var allUnread = new Dictionary<string, ICustomMessage>();
 
@@ -34,23 +28,28 @@ namespace Gmail_Checker.Classes
 
                 client.Inbox.Open(FolderAccess.ReadOnly);
 
-                var uids = client.Inbox.Search(SearchQuery.NotSeen);
+           
+                var uids = client.Inbox.Search(SearchQuery.SentAfter(DateTime.Today - TimeSpan.FromDays(MAXIMUM_AGE_OF_MESSAGES_DAYS)).And(SearchQuery
+                   .NotSeen
+                    .And((SearchQuery
+                    .Not
+                     ((SearchQuery.HasGMailLabel("CATEGORY_SOCIAL").Or(SearchQuery.HasGMailLabel("CATEGORY_PROMOTIONS"))))))));
 
-                int count = 0;
+              //  int count = 0;
                 foreach (var uid in uids)
                 {
                     var message = client.Inbox.GetMessage(uid);
 
                     allUnread.Add(uid.Id.ToString(), new CustomMessage(message));
 
-                    count++;
-                    if (count == 100) { break; }
+                   // count++;
+                   // if (count == 100) { break; }
                 }
 
                 client.Disconnect(true);
             }
-           
-            
+
+
 
 
 
@@ -59,6 +58,8 @@ namespace Gmail_Checker.Classes
 
         public IList<string> ListUnreadMessages()
         {
+           
+
             var allUnread = new List<string>();
             using (var client = new ImapClient(new ProtocolLogger("imap.log")))
             {
@@ -66,21 +67,26 @@ namespace Gmail_Checker.Classes
 
                 client.Authenticate("viktor.mirev@gmail.com", "paraphernalia");
 
-                client.Inbox.Open(FolderAccess.ReadOnly);
+                client.Inbox.Open(FolderAccess.ReadOnly);        
 
-                var uids = client.Inbox.Search(SearchQuery.NotSeen);
+                var uids = client.Inbox.Search(SearchQuery.SentAfter(DateTime.Today - TimeSpan.FromDays(MAXIMUM_AGE_OF_MESSAGES_DAYS)).And(SearchQuery
+                   .NotSeen
+                    .And((SearchQuery
+                    .Not
+                     ((SearchQuery.HasGMailLabel("CATEGORY_SOCIAL").Or(SearchQuery.HasGMailLabel("CATEGORY_PROMOTIONS"))))))));
 
-                int count = 0;
-                foreach (var uid in uids)
-                {
-                    allUnread.Add(uid.Id.ToString());
-                    count++;
-                    if (count == 100) break;
-                }
+                
+             // int count = 0;
+              foreach (var uid in uids)
+              {
+                  allUnread.Add(uid.Id.ToString());
+                 // count++;
+              //    if (count == 100) break;
+              }
 
-                client.Disconnect(true);
-            }
-            return allUnread;
+              client.Disconnect(true);
+          }
+          return allUnread; 
         }
     }
 }
