@@ -48,7 +48,7 @@ namespace Gmail_Checker.Classes
             {
                 int index = msg.TextBody.IndexOf('.');
                 if (index < 0) index = 100;
-                this.Snippet = msg.TextBody.Substring(0,Math.Min(index,msg.TextBody.Length-1));
+                this.Snippet = msg.TextBody.Substring(0,Math.Min(index,msg.TextBody.Length-1)).Replace('\n', ' ');
             }
             this.Content = msg.TextBody;
             this.Sender = msg.From.ToString();

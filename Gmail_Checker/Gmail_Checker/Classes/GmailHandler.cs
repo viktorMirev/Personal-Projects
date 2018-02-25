@@ -8,10 +8,11 @@ using MailKit.Search;
 using MailKit.Security;
 using MailKit.Net.Imap;
 using Gmail_Checker.Interfaces;
+using System.Linq;
 
 namespace Gmail_Checker.Classes
 {
-    
+
     public class GmailHandler : IGmailHandler
     {
         private const int MAXIMUM_AGE_OF_MESSAGES_DAYS = 50;
@@ -36,29 +37,24 @@ namespace Gmail_Checker.Classes
 
 
                 //  int count = 0;
-                foreach (var uid in uids)
+                for (int i = uids.Count-1; i >=0 ; i--)
                 {
-                    var message = client.Inbox.GetMessage(uid);
+                    var message = client.Inbox.GetMessage(uids[i]);
 
-                    allUnread.Add(uid.Id.ToString(), new CustomMessage(message));
+                    allUnread.Add(uids[i].Id.ToString(), new CustomMessage(message));
 
-                   // count++;
-                   // if (count == 100) { break; }
+                    
                 }
+               
 
                 client.Disconnect(true);
             }
-
-
-
-
-
             return allUnread;
         }
 
         public IList<string> ListUnreadMessages()
         {
-           
+
 
             var allUnread = new List<string>();
             using (var client = new ImapClient(new ProtocolLogger("imap.log")))
@@ -67,24 +63,25 @@ namespace Gmail_Checker.Classes
 
                 client.Authenticate("viktor.mirev@gmail.com", "paraphernalia");
 
-                client.Inbox.Open(FolderAccess.ReadOnly);        
+                client.Inbox.Open(FolderAccess.ReadOnly);
 
                 var uids = client.Inbox.Search
                     (SearchQuery.SentAfter(DateTime.Today - TimeSpan.FromDays(MAXIMUM_AGE_OF_MESSAGES_DAYS))
                     .And(SearchQuery.NotSeen).And((SearchQuery.Not((SearchQuery.HasGMailLabel("Social")).Or(SearchQuery.HasGMailLabel("Promotions"))))));
 
-                
-             // int count = 0;
-              foreach (var uid in uids)
-              {
-                  allUnread.Add(uid.Id.ToString());
-                 // count++;
-              //    if (count == 100) break;
-              }
 
-              client.Disconnect(true);
-          }
-          return allUnread; 
+                // int count = 0;
+                foreach (var uid in uids)
+                {
+                    allUnread.Add(uid.Id.ToString());
+                    // count++;
+                    //    if (count == 100) break;
+                }
+
+                client.Disconnect(true);
+            }
+            
+            return allUnread;
         }
     }
 }
