@@ -44,7 +44,7 @@ namespace Gmail_Checker.Classes
         public CustomMessage(MimeMessage msg)
         {
             this.Id = msg.MessageId;
-            if(msg.TextBody.Length!=0)
+            if(msg.TextBody!=null)
             {
                 int index = msg.TextBody.IndexOf('.');
                 if (index < 0) index = 100;

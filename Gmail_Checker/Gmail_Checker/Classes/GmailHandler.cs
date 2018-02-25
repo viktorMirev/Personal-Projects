@@ -14,7 +14,7 @@ namespace Gmail_Checker.Classes
     
     public class GmailHandler : IGmailHandler
     {
-        private const int MAXIMUM_AGE_OF_MESSAGES_DAYS = 40;
+        private const int MAXIMUM_AGE_OF_MESSAGES_DAYS = 50;
 
         public IDictionary<string, ICustomMessage> GetUnreadMessages()
         {
@@ -28,14 +28,14 @@ namespace Gmail_Checker.Classes
 
                 client.Inbox.Open(FolderAccess.ReadOnly);
 
-           
-                var uids = client.Inbox.Search(SearchQuery.SentAfter(DateTime.Today - TimeSpan.FromDays(MAXIMUM_AGE_OF_MESSAGES_DAYS)).And(SearchQuery
-                   .NotSeen
-                    .And((SearchQuery
-                    .Not
-                     ((SearchQuery.HasGMailLabel("CATEGORY_SOCIAL").Or(SearchQuery.HasGMailLabel("CATEGORY_PROMOTIONS"))))))));
 
-              //  int count = 0;
+
+                var uids = client.Inbox.Search
+                    (SearchQuery.SentAfter(DateTime.Today - TimeSpan.FromDays(MAXIMUM_AGE_OF_MESSAGES_DAYS))
+                    .And(SearchQuery.NotSeen).And((SearchQuery.Not((SearchQuery.HasGMailLabel("Social")).Or(SearchQuery.HasGMailLabel("Promotions"))))));
+
+
+                //  int count = 0;
                 foreach (var uid in uids)
                 {
                     var message = client.Inbox.GetMessage(uid);
@@ -69,11 +69,9 @@ namespace Gmail_Checker.Classes
 
                 client.Inbox.Open(FolderAccess.ReadOnly);        
 
-                var uids = client.Inbox.Search(SearchQuery.SentAfter(DateTime.Today - TimeSpan.FromDays(MAXIMUM_AGE_OF_MESSAGES_DAYS)).And(SearchQuery
-                   .NotSeen
-                    .And((SearchQuery
-                    .Not
-                     ((SearchQuery.HasGMailLabel("CATEGORY_SOCIAL").Or(SearchQuery.HasGMailLabel("CATEGORY_PROMOTIONS"))))))));
+                var uids = client.Inbox.Search
+                    (SearchQuery.SentAfter(DateTime.Today - TimeSpan.FromDays(MAXIMUM_AGE_OF_MESSAGES_DAYS))
+                    .And(SearchQuery.NotSeen).And((SearchQuery.Not((SearchQuery.HasGMailLabel("Social")).Or(SearchQuery.HasGMailLabel("Promotions"))))));
 
                 
              // int count = 0;
