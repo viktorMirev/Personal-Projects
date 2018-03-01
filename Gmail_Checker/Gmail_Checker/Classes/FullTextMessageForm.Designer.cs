@@ -35,6 +35,7 @@ namespace Gmail_Checker.Classes
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FullTextMessageForm));
             this.FullTextBox = new System.Windows.Forms.TextBox();
             this.SenderLabel = new System.Windows.Forms.Label();
             this.SubjectLabel = new System.Windows.Forms.Label();
@@ -42,6 +43,8 @@ namespace Gmail_Checker.Classes
             // 
             // FullTextBox
             // 
+            this.FullTextBox.BackColor = System.Drawing.Color.Silver;
+            this.FullTextBox.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FullTextBox.Location = new System.Drawing.Point(12, 57);
             this.FullTextBox.Multiline = true;
             this.FullTextBox.Name = "FullTextBox";
@@ -51,18 +54,20 @@ namespace Gmail_Checker.Classes
             // SenderLabel
             // 
             this.SenderLabel.AutoSize = true;
+            this.SenderLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SenderLabel.Location = new System.Drawing.Point(9, 9);
             this.SenderLabel.Name = "SenderLabel";
-            this.SenderLabel.Size = new System.Drawing.Size(89, 17);
+            this.SenderLabel.Size = new System.Drawing.Size(93, 20);
             this.SenderLabel.TabIndex = 1;
             this.SenderLabel.Text = "SenderLabel";
             // 
             // SubjectLabel
             // 
             this.SubjectLabel.AutoSize = true;
+            this.SubjectLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SubjectLabel.Location = new System.Drawing.Point(9, 32);
             this.SubjectLabel.Name = "SubjectLabel";
-            this.SubjectLabel.Size = new System.Drawing.Size(90, 17);
+            this.SubjectLabel.Size = new System.Drawing.Size(95, 20);
             this.SubjectLabel.TabIndex = 2;
             this.SubjectLabel.Text = "SubjectLabel";
             // 
@@ -70,12 +75,14 @@ namespace Gmail_Checker.Classes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(854, 438);
             this.Controls.Add(this.SubjectLabel);
             this.Controls.Add(this.SenderLabel);
             this.Controls.Add(this.FullTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FullTextMessageForm";
-            this.Text = "FullTextMessageForm";
+            this.Text = "Full Message";
             this.ResumeLayout(false);
             this.PerformLayout();
 

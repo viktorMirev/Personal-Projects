@@ -1,6 +1,5 @@
 ﻿using Gmail_Checker.Interfaces;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Gmail_Checker.Classes
 {
@@ -18,7 +17,7 @@ namespace Gmail_Checker.Classes
             while (true)
             {
                 var unreadMessages = gmail.ListUnreadMessages();
-                if (!Compare(unreadMessages))
+                if (!CompareN_Clean(unreadMessages))
                 {
                     MessageForm1 currForm = new MessageForm1();
                     currForm.LoadSectors(currentMessages);
@@ -29,17 +28,42 @@ namespace Gmail_Checker.Classes
           
         }
 
-        private bool Compare(IList<string> unrList)
+        private bool CompareN_Clean(IList<string> unrList)
         {
             foreach (var msg in unrList)
             {
-                if (!this.currentMessages.ContainsKey(msg))
+                if(!currentMessages.ContainsKey(msg))
                 {
-                    this.currentMessages = gmail.GetUnreadMessages();
+                    currentMessages = gmail.GetUnreadMessages();
                     return false;
                 }
             }
             return true;
+            /*
+            bool areEqual = true;
+            IList<bool> ToBeExcluded = new List<bool>();
+            for (int i = 0; i < unrList.Count; i++)
+            {
+                if (this.currentMessages.ContainsKey(unrList[i]))
+                {
+                    ToBeExcluded.Add(true);
+                }
+                else
+                {
+                    ToBeExcluded.Add(false);
+                    areEqual = false;
+                }
+            }
+
+            for (int i = 0; i < ToBeExcluded.Count; i++)
+            {
+                if (!ToBeExcluded[i]) unrList.RemoveAt(i);
+            }
+
+            
+
+            return areEqual;
+            */
         }
     }
 }

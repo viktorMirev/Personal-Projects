@@ -1,14 +1,11 @@
 ﻿
 using System;
 using System.Collections.Generic;
-
-using MimeKit;
 using MailKit;
 using MailKit.Search;
 using MailKit.Security;
 using MailKit.Net.Imap;
 using Gmail_Checker.Interfaces;
-using System.Linq;
 
 namespace Gmail_Checker.Classes
 {
@@ -37,15 +34,15 @@ namespace Gmail_Checker.Classes
 
 
                 //  int count = 0;
-                for (int i = uids.Count-1; i >=0 ; i--)
+                for (int i = uids.Count - 1; i >= 0; i--)
                 {
                     var message = client.Inbox.GetMessage(uids[i]);
 
                     allUnread.Add(uids[i].Id.ToString(), new CustomMessage(message));
 
-                    
+
                 }
-               
+
 
                 client.Disconnect(true);
             }
@@ -80,7 +77,7 @@ namespace Gmail_Checker.Classes
 
                 client.Disconnect(true);
             }
-            
+
             return allUnread;
         }
     }
