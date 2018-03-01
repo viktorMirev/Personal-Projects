@@ -7,8 +7,8 @@ namespace Gmail_Checker
 {
     partial class CustomSectorList
     {
-        private const int ITEM_HEIGHT = 92;
-        private const int SPACING = 15;
+        private const int ITEM_HEIGHT = 96;
+        private const int SPACING = 13;
         /// <summary> 
         /// Required designer variable.
         /// </summary>

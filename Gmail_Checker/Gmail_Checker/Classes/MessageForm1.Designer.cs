@@ -39,7 +39,7 @@ namespace Gmail_Checker.Classes
             // 
             this.customSectorList1.AutoScroll = true;
             this.customSectorList1.AutoSize = true;
-            this.customSectorList1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.customSectorList1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.customSectorList1.Location = new System.Drawing.Point(1, 1);
             this.customSectorList1.MaximumSize = new System.Drawing.Size(750, 434);
             this.customSectorList1.Name = "customSectorList1";
@@ -52,14 +52,16 @@ namespace Gmail_Checker.Classes
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(742, 57);
+            this.ClientSize = new System.Drawing.Size(732, 57);
             this.Controls.Add(this.customSectorList1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(760, 520);
+            this.MaximumSize = new System.Drawing.Size(750, 520);
             this.Name = "MessageForm1";
-            this.Opacity = 0.93D;
+            this.Opacity = 0.9D;
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Unread Messages";
             this.Load += new System.EventHandler(this.MessageForm1_Load);
             this.ResumeLayout(false);
