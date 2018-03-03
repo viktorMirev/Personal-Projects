@@ -77,7 +77,7 @@ namespace Gmail_Checker
             this.labelSnippet.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSnippet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.labelSnippet.Location = new System.Drawing.Point(12, 60);
-            this.labelSnippet.MaximumSize = new System.Drawing.Size(0, 100);
+            this.labelSnippet.MaximumSize = new System.Drawing.Size(0, 20);
             this.labelSnippet.Name = "labelSnippet";
             this.labelSnippet.Size = new System.Drawing.Size(61, 20);
             this.labelSnippet.TabIndex = 6;
