@@ -22,7 +22,7 @@ namespace Gmail_Checker.Classes
             {
                 client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
 
-                client.Authenticate("viktor.mirev@gmail.com", "paraphernalia");
+                client.Authenticate("example@gmail.com", "password");
 
                 client.Inbox.Open(FolderAccess.ReadOnly);
 
@@ -58,7 +58,7 @@ namespace Gmail_Checker.Classes
             {
                 client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
 
-                client.Authenticate("viktor.mirev@gmail.com", "paraphernalia");
+                client.Authenticate("example@gmail.com", "password");
 
                 client.Inbox.Open(FolderAccess.ReadOnly);
 
