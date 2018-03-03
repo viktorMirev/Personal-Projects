@@ -50,10 +50,10 @@ namespace Gmail_Checker
             // labelFromText
             // 
             this.labelFromText.AutoSize = true;
-            this.labelFromText.BackColor = System.Drawing.Color.SlateGray;
+            this.labelFromText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelFromText.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFromText.ForeColor = System.Drawing.Color.Black;
-            this.labelFromText.Location = new System.Drawing.Point(18, 14);
+            this.labelFromText.ForeColor = System.Drawing.Color.DimGray;
+            this.labelFromText.Location = new System.Drawing.Point(18, 13);
             this.labelFromText.Name = "labelFromText";
             this.labelFromText.Size = new System.Drawing.Size(162, 20);
             this.labelFromText.TabIndex = 3;
@@ -62,9 +62,9 @@ namespace Gmail_Checker
             // labelSubjectText
             // 
             this.labelSubjectText.AutoSize = true;
-            this.labelSubjectText.BackColor = System.Drawing.Color.SlateGray;
+            this.labelSubjectText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelSubjectText.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSubjectText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.labelSubjectText.ForeColor = System.Drawing.Color.DimGray;
             this.labelSubjectText.Location = new System.Drawing.Point(18, 33);
             this.labelSubjectText.Name = "labelSubjectText";
             this.labelSubjectText.Size = new System.Drawing.Size(35, 20);
@@ -77,6 +77,7 @@ namespace Gmail_Checker
             this.labelSnippet.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSnippet.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.labelSnippet.Location = new System.Drawing.Point(12, 60);
+            this.labelSnippet.MaximumSize = new System.Drawing.Size(0, 100);
             this.labelSnippet.Name = "labelSnippet";
             this.labelSnippet.Size = new System.Drawing.Size(61, 20);
             this.labelSnippet.TabIndex = 6;
@@ -84,13 +85,13 @@ namespace Gmail_Checker
             // 
             // Button_ShowFullMsg
             // 
-            this.Button_ShowFullMsg.BackColor = System.Drawing.Color.SlateGray;
+            this.Button_ShowFullMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Button_ShowFullMsg.FlatAppearance.BorderColor = System.Drawing.Color.SlateGray;
             this.Button_ShowFullMsg.FlatAppearance.BorderSize = 0;
-            this.Button_ShowFullMsg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.Button_ShowFullMsg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.Button_ShowFullMsg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_ShowFullMsg.Font = new System.Drawing.Font("Candara", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Button_ShowFullMsg.ForeColor = System.Drawing.Color.FloralWhite;
+            this.Button_ShowFullMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Button_ShowFullMsg.Location = new System.Drawing.Point(527, 3);
             this.Button_ShowFullMsg.Name = "Button_ShowFullMsg";
             this.Button_ShowFullMsg.Size = new System.Drawing.Size(168, 30);
@@ -103,7 +104,7 @@ namespace Gmail_Checker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SlateGray;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Controls.Add(this.Button_ShowFullMsg);
             this.Controls.Add(this.labelSnippet);
             this.Controls.Add(this.labelSubjectText);

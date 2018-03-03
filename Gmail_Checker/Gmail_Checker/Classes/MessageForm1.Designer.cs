@@ -40,10 +40,12 @@ namespace Gmail_Checker.Classes
             this.customSectorList1.AutoScroll = true;
             this.customSectorList1.AutoSize = true;
             this.customSectorList1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.customSectorList1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("customSectorList1.BackgroundImage")));
+            this.customSectorList1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.customSectorList1.Location = new System.Drawing.Point(1, 1);
-            this.customSectorList1.MaximumSize = new System.Drawing.Size(750, 434);
+            this.customSectorList1.MaximumSize = new System.Drawing.Size(764, 434);
             this.customSectorList1.Name = "customSectorList1";
-            this.customSectorList1.Size = new System.Drawing.Size(750, 55);
+            this.customSectorList1.Size = new System.Drawing.Size(764, 55);
             this.customSectorList1.TabIndex = 1;
             // 
             // MessageForm1
@@ -52,12 +54,13 @@ namespace Gmail_Checker.Classes
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(732, 57);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(746, 48);
             this.Controls.Add(this.customSectorList1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(750, 520);
+            this.MaximumSize = new System.Drawing.Size(764, 520);
             this.Name = "MessageForm1";
             this.Opacity = 0.9D;
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
