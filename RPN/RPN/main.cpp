@@ -185,10 +185,22 @@ double Calculate(char ** rpn, int length)
 
 }
 
+bool TestTheCode()
+{
+
+}
+
 int main()
 {
+	//for 5 1 2 + 4 * + 3 -
+	//should return 14
+
+
+
+	//MANUAL TEST
 	int length;
 	char**  testExpr = ReadRpnFromConsole(length);
+
 	cout << Calculate(testExpr,length) << endl;
 	return 0;
 }
