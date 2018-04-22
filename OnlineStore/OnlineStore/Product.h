@@ -16,7 +16,11 @@ public:
 	void operator=(const Product& other);
 
 	//Printing function
-	void Print();
+	void Print() const;
+
+	//Selectors
+
+	int GetSku() const;
 
 	//Mutators
 

@@ -32,15 +32,23 @@ void Product::operator=(const Product & other)
 	CopyFromOther(other);
 }
 
-void Product::Print()
+void Product::Print() const
 {
 	std::cout << "FULL PRODUCT DESCRIPTION:" << std::endl;
+	std::cout << std::endl;
+	std::cout << "SKU: " << this->SKU << std::endl;
 	std::cout << "brand: " << this->brand<< std::endl;
 	std::cout << "model: " << this->model << std::endl;
 	std::cout << "size: " << this->size << std::endl;
 	std::cout << "color: " << this->color << std::endl;
 	std::cout << "price: " << this->price << std::endl;
 	std::cout << "count: " << this->count << std::endl;
+	std::cout << std::endl;
+}
+
+int Product::GetSku() const
+{
+	return this->SKU;
 }
 
 void Product::SetPrice(double price)
@@ -84,6 +92,6 @@ void Product::CopyFromOther(const Product& other)
 	this->color = new char[len];
 	memcpy(this->color, other.color, len);
 
-	this->price = price;
-	this->count = count;
+	this->price = other.price;
+	this->count = other.count;
 }
