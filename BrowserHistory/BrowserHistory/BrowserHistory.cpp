@@ -16,7 +16,14 @@ void BrowserHistory::CopyHistoryFromOther(const BrowserHistory & other)
 	this->history = new HistoryEntry[other.maxLenght];
 	for (size_t i = 0; i < other.currLenght; i++)
 	{
-		this->history[i] = other.history[i];
+		this->history[i].date = other.history[i].date;
+
+		//the lenght of the url we want to copy + 1 (the terminating zero)
+		int len = strlen(other.history[i].Url) +1 ;
+
+		this->history[i].Url = new char[len];
+
+		memcpy(history[i].Url, other.history[i].Url, len);
 	}
 	this->currLenght = other.currLenght;
 }
@@ -73,7 +80,7 @@ int BrowserHistory::NumberOfEntriesPerMonth(int month)
 	int count = 0;
 	for (size_t i = 0; i < this->currLenght; i++)
 	{
-		if (this->history->date == month) count++;
+		if (this->history[i].date == month) count++;
 	}
 	return count;
 }
@@ -82,9 +89,13 @@ int BrowserHistory::MonthWithMostEntries()
 {
 	//we save the amount of entries per month here
 	int monthsCount[12];
+	for (size_t i = 0; i < 12; i++)
+	{
+		monthsCount[i] = 0;
+	}
 	for (size_t i = 0; i < this->currLenght; i++)
 	{
-		monthsCount[this->history[i].date - 1];
+		monthsCount[this->history[i].date - 1]++;
 	}
 	int maxCount = 0;
 	int indexOfMaxCount = 0;
@@ -105,11 +116,19 @@ int BrowserHistory::MonthWithMostEntries()
 
 void BrowserHistory::PrintAll()
 {
-	std::cout << "PRINTING ALL OF THE BROWSING DATA..." << std::endl;
-	for (size_t i = 0; i < this->currLenght; i++)
+	if (this->currLenght != 0)
 	{
-		std::cout << "Month: " << this->history[i].date << " URL: " << this->history[i].Url << std::endl;
+		std::cout << "PRINTING ALL OF THE BROWSING DATA..." << std::endl;
+		for (size_t i = 0; i < this->currLenght; i++)
+		{
+			std::cout << "Month: " << this->history[i].date << " URL: " << this->history[i].Url << std::endl;
+		}
 	}
+	else
+	{
+		std::cout << "No Browsing data!" << std::endl;
+	}
+	
 }
 
 void BrowserHistory::AddNewHistoryEntry()
@@ -180,7 +199,11 @@ void BrowserHistory::AddExistingEntry(const HistoryEntry & entry)
 	{
 		HistoryEntry newEntry;
 		newEntry.date = entry.date;
-		newEntry.Url = entry.Url;
+		
+		//length of the url of the entry we want to copy 
+		int len = strlen(entry.Url) + 1;
+		newEntry.Url = new char[len];
+		memcpy(newEntry.Url, entry.Url, len);
 		this->history[this->currLenght] = newEntry;
 		this->currLenght++;
 	}

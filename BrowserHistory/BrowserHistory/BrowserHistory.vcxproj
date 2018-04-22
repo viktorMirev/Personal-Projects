@@ -120,7 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BrowserHistory.cpp" />
-    <ClCompile Include="Maincpp.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
