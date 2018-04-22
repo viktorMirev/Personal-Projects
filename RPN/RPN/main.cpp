@@ -7,6 +7,8 @@
 #include <iostream>
 using namespace std;
 
+
+//Function to split the string from the console
 char ** ReadRpnFromConsole(int &len)
 {
 	char ** rpn = new char*[100]();
@@ -42,11 +44,13 @@ char ** ReadRpnFromConsole(int &len)
 	return rpn;
 }
 
+//Return true if a number is integer
 bool IsInteger(double num)
 {
 	return num == ceil(num);
 }
 
+//Reports when you try to use % with non integer values
 void ReportModError()
 {
 	cout << "Error! You cannot use '%' with non integer values!" << endl;
@@ -57,6 +61,7 @@ void ReportDivisionByZero()
 	cout << "Error! You cannot devide by Zero!" << endl;
 }
 
+//Reports if the rpn is incomplete
 void ReportNotCompleteRpn()
 {
 	cout << "Error! Incomplete expression!" << endl;
@@ -182,29 +187,8 @@ double Calculate(char ** rpn, int length)
 
 int main()
 {
-	/*
-	char**  lqlq = ReadRpnFromConsole();
-
-	LinkedStack st;
-
-
-	for (int i = 0; i < 1000; i++) {
-	st.push(i);
-	}
-
-	LinkedStack st1 = st;
-	LinkedStack st2;
-	st2 = st1;
-
-	while (!st2.IsEmpty())
-	{
-	cout << st2.pop() << ' ';
-	}
-	cout << endl;
-	*/
 	int length;
 	char**  testExpr = ReadRpnFromConsole(length);
 	cout << Calculate(testExpr,length) << endl;
-	return main();
-	
+	return 0;
 }
