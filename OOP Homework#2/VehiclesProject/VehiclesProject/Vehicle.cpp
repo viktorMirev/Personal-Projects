@@ -21,7 +21,6 @@ Vehicle & Vehicle::operator=(const Vehicle & other)
 {
 	if (this != &other)
 	{
-		//this->Delete();
 		this->CopyFromOther(other);
 	}
 
