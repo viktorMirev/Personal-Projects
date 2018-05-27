@@ -27,10 +27,10 @@ Car & Car::operator=(const Car & other)
 
 void Car::Details() const
 {
-	cout <<"Make: "<< this->GetMake() << endl
-		<< "Model: "<<this->GetModel() << endl
-		<< "Color: "<<this->GetColor() << endl
+	
+	cout <<"Make: "<<((this->GetMake()==nullptr)?("no make"):(this->GetMake())) << endl
+		<< "Model: "<<((this->GetModel()==nullptr)?("no model"):(this->GetModel())) << endl
+		<< "Color: "<<((this->GetColor()==nullptr)?("no color"):(this->GetColor())) << endl
 		<< "Mileage: "<<this->GetMileage() << endl
 		<< "Year: "<<this->GetYear() << endl;
-	
 }

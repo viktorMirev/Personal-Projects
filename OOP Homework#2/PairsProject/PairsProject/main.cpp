@@ -19,7 +19,7 @@ int main()
 
 	one = two;
 
-	one.setValue(10);
+	one.setValue(20);
 	cout << one.getKey() << "  " << one.getValue() << endl;
 
 	cout << endl;
@@ -83,6 +83,5 @@ int main()
 	cout << "Test the number counter" << endl;
 	test2Set->set("third", 3);
 	cout << "Number (should be 3): " << test2Set->count() << endl;
-	system("pause"); 
 
 }

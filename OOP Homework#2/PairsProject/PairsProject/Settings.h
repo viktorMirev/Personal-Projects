@@ -2,7 +2,7 @@
 
 #include"Pair.h"
 #include"Vector.h"
-#include<string.h>
+#include<cstring>
 
 template <class T>
 class Settings
@@ -14,7 +14,7 @@ public:
 	~Settings<T>();
 
 	void set(const char *, T);
-	bool get(const char *, T & );
+	bool get(const char *, T & ) const;
 
 	int count() const;
 
@@ -23,7 +23,7 @@ private:
 	void copyFromOther(const Settings&);
 
 	//returns -1 if not found;
-	int getIndexOf(const char *);
+	int getIndexOf(const char *) const;
 };
 
 template<class T>
@@ -41,7 +41,10 @@ inline Settings<T>::Settings(const Settings & other)
 template<class T>
 inline Settings<T> & Settings<T>::operator=(const Settings & other)
 {
-	this->copyFromOther(other);
+	if (this != &other)
+	{
+		this->copyFromOther(other);
+	}
 	return *this;
 }
 
@@ -57,7 +60,7 @@ inline void Settings<T>::set(const char * key, T value)
 	int index = this->getIndexOf(key);
 	if (index >= 0)
 	{
-		this->pairs->operator[](index).setValue(value);
+		(*(this->pairs))[index].setValue(value);
 	}
 	else
 	{
@@ -67,12 +70,12 @@ inline void Settings<T>::set(const char * key, T value)
 }
 
 template<class T>
-inline bool Settings<T>::get(const char * key, T & value)
+inline bool Settings<T>::get(const char * key, T & value) const
 {
 	int index = this->getIndexOf(key);
 	if (index >= 0)
 	{
-		value = this->pairs->operator[](index).getValue();
+		value = (*(this->pairs))[index].getValue();
 		return true;
 	}
 
@@ -97,12 +100,12 @@ inline void Settings<T>::copyFromOther(const Settings & other)
 }
 
 template<class T>
-inline int Settings<T>::getIndexOf(const char * key)
+inline int Settings<T>::getIndexOf(const char * key) const
 {
 	int size = this->pairs->Size();
 	for (int i = 0; i < size; i++)
 	{
-		if (!strcmp(key, pairs->operator[](i).getKey())) return i;
+		if (strcmp(key, (*(this->pairs))[i].getKey()) == 0) return i;
 	}
 	return -1;
 }

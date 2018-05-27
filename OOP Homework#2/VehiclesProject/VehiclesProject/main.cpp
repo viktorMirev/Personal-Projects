@@ -8,15 +8,21 @@ using namespace std;
 
 int main()
 {
-	
+	cout << "Test the car class" << endl;
+	cout << endl;
 	Car * myCar = new Car("mercedes", "sls amg", "white", 2005, 12300);
 	Car * yourCar = new Car(*myCar);
-	char * ss = nullptr;
+	Car * nullCar = new Car();
+
+	nullCar->Details();
 	
 	myCar->Details();
 	cout << endl;
 	yourCar->Details();
 
+	cout << endl;
+	cout << "test operator =" << endl;
+	cout << endl;
 	*myCar = *yourCar;
 
 	yourCar->SetColor("red");
@@ -25,6 +31,8 @@ int main()
 	cout << endl;
 	yourCar->Details();
 
+	cout << endl;
+	cout << "Test the Truck class" << endl;
 
 	Truck * myTruck = new Truck("MAN", "freezer", "red", 2004, 123456 , 10);
 	Truck * yTruck = new Truck(*myTruck);
@@ -32,6 +40,10 @@ int main()
 	myTruck->Details();
 	cout << endl;
 	yTruck->Details();
+
+	cout << endl;
+	cout << "Test operator =" << endl;
+	cout << endl;
 
 	*yTruck = *myTruck;
 	yTruck->SetColor("smth");
@@ -41,6 +53,9 @@ int main()
 	cout << endl;
 	yTruck->Details();
 
+	cout << endl;
+	cout << "Test motorcycle" << endl;
+	cout << endl;
 
 	Motorcycle * motor = new Motorcycle("KVZKI", "lighting", "dark", 2016, 20000, "speed enf");
 
@@ -51,6 +66,8 @@ int main()
 	cout << endl;
 	otherMotor->Details();
 
+	cout << "Test operator =" << endl;
+
 	*otherMotor = *motor;
 	otherMotor->SetMake("honda");
 	
@@ -58,9 +75,5 @@ int main()
 	motor->Details();
 	cout << endl;
 	otherMotor->Details();
-
-	int a;
-
-	cin >> a;
-
+	
 }

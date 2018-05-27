@@ -24,7 +24,6 @@ Motorcycle & Motorcycle::operator=(const Motorcycle & other)
 {
 	if (this != &other)
 	{
-		//this->DeleteAll();
 		this->CopyFromOther(other);
 	}
 	return *this;
@@ -35,12 +34,12 @@ const char * Motorcycle::GetType() const
 }
 void Motorcycle::Details() const
 {
-	cout << "Make: " << this->GetMake() << endl
-		<< "Model: " << this->GetModel() << endl
-		<< "Color: " << this->GetColor() << endl
+	cout << "Make: " << ((this->GetMake() == nullptr) ? ("no make") : (this->GetMake())) << endl
+		<< "Model: " << ((this->GetModel() == nullptr) ? ("no model") : (this->GetModel())) << endl
+		<< "Color: " << ((this->GetColor() == nullptr) ? ("no color") : (this->GetColor())) << endl
 		<< "Mileage: " << this->GetMileage() << endl
 		<< "Year: " << this->GetYear() << endl
-		<< "Type: " << this->GetType() << endl;
+		<< "Type: " << ((this->GetType() == nullptr) ? ("no type") : (this->type)) << endl;
 }
 void Motorcycle::setType(const char * type)
 {

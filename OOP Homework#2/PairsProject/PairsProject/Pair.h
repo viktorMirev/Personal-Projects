@@ -11,7 +11,7 @@ public:
 	Pair<T> & operator=(const Pair & other);
 	~Pair<T>();
 
-	Pair(const char * key, T value);
+	Pair<T>(const char * key, T value);
 
 	const char * getKey() const;
 	const T& getValue() const;
@@ -39,7 +39,10 @@ inline Pair<T>::Pair(const Pair & other)
 template<class T>
 inline Pair<T> & Pair<T>::operator=(const Pair & other)
 {
-	copyFromOther(other);
+	if (this != &other)
+	{
+		copyFromOther(other);
+	}
 	return *this;
 }
 
@@ -78,11 +81,8 @@ inline void Pair<T>::setValue(T newValue)
 template<class T>
 inline void Pair<T>::copyFromOther(const Pair & other)
 {
-	if (this != &other)
-	{
-		this->setKey(other.key);
-		this->setValue(other.value);
-	}
+	this->setKey(other.key);
+	this->setValue(other.value);
 }
 
 template<class T>
